@@ -1,0 +1,22 @@
+.font {
+  font-family: 'Righteous', cursive;
+}
+
+.white-text {
+  color: whitesmoke;
+}
+
+header {
+  background-color: #0067c6;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  text-decoration: none;
+}
+
+div.logo {
+  width: min-content;
+}
