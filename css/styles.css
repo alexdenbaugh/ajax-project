@@ -39,13 +39,16 @@ div.home-page button {
   margin: 20px;
   outline: none;
   cursor: pointer;
+  color: #0067c6;
+  transition: color 0.3s, background-color 0.3s;
 }
 
 i {
-  color: #0067c6;
-  font-size: 300px;
+  color: inherit;
+  font-size: 200px;
 }
 
 div.home-page button:hover {
-  background-color: #a9d6ff;
+  background-color: #0067c6;
+  color: white;
 }
