@@ -1,17 +1,16 @@
 .container {
-  margin: auto 0;
+  max-width: 575px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+div.nav-bar {
+  width: 100%;
+  margin: 0;
+  padding: 0 1.5rem;
   display: flex;
-  flex-wrap: wrap;
-  padding: 0 10px;
-  width: 100vw;
-}
-
-main > div.container {
-  height: 100vh;
-}
-
-header > div.container {
   align-items: center;
+  justify-content: start;
 }
 
 .hidden {
@@ -19,11 +18,20 @@ header > div.container {
 }
 
 .row {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
-/* @media screen {
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
 
-} */
+  .home-page-divider {
+    display: none;
+  }
+
+  .column-half {
+    width: 50%;
+  }
+}

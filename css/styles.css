@@ -31,8 +31,8 @@ div.home-page {
 }
 
 div.home-page button {
+  width: 300px;
   background-color: white;
-  width: 40%;
   aspect-ratio: 1 / 1;
   border: #0067c6 medium solid;
   border-radius: 10px;
@@ -46,6 +46,13 @@ div.home-page button {
 i {
   color: inherit;
   font-size: 200px;
+}
+
+div.home-page-divider {
+  width: 300px;
+  height: 10px;
+  background-color: #404040;
+  border-radius: 10px;
 }
 
 div.home-page button:hover {
