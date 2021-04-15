@@ -26,15 +26,26 @@ main {
   background-color: #ededed;
 }
 
-.home-page > button {
-  background-color: white;
-  width: 40%;
-  border-color: #0067c6;
-  border-radius: 10px;
+div.home-page {
+  justify-content: center;
 }
 
-.home-page i {
+div.home-page button {
+  background-color: white;
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  border: #0067c6 medium solid;
+  border-radius: 10px;
+  margin: 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+i {
   color: #0067c6;
-  width: 80%;
-  height: 80%;
+  font-size: 300px;
+}
+
+div.home-page button:hover {
+  background-color: #a9d6ff;
 }
