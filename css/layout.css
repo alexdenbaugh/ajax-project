@@ -1,0 +1,72 @@
+header .container {
+  width: 100%;
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+main .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100vh;
+}
+
+div.nav-bar {
+  max-width: 600px;
+  padding: 0 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calculator {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calculator-title {
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.column-full {
+  width: 100%;
+}
+
+input {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 800px;
+  }
+
+  .home-page-divider {
+    display: none;
+  }
+
+  form,
+  .result-window {
+    max-width: 800px;
+  }
+
+  input {
+    width: 500px;
+  }
+
+  div.home-page button {
+    width: 200px;
+  }
+
+  div.home-page i {
+    font-size: 100px;
+  }
+}

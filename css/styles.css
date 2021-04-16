@@ -1,0 +1,197 @@
+.font {
+  font-family: 'Righteous', cursive;
+}
+
+.font-size {
+  font-size: 15px;
+}
+
+.white-text {
+  color: #ededed;
+}
+
+.black-text {
+  color: black;
+}
+
+.grey-text {
+  color: #2f2f2f;
+}
+
+.red-text {
+  color: #d10000;
+}
+
+.blue-text {
+  color: #0067c6;
+}
+
+header {
+  background-color: #0067c6;
+  display: flex;
+  height: 50px;
+  width: 100%;
+}
+
+button,
+a,
+select,
+i {
+  cursor: pointer;
+}
+
+div.menu-icon i,
+div.nav-bar-menu-icon i {
+  font-size: 30px;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 150px;
+  aspect-ratio: 1 / 1;
+  background-color: white;
+  border-radius: 5px;
+  border: #0067c6 2px solid;
+}
+
+.hamburger-icon {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+div.menu {
+  width: 100%;
+}
+
+div.menu-icon {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  width: 100%;
+  height: 45px;
+  padding: 0 22px;
+}
+
+button.menu {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-top: #0067c6 2px solid;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background-color: white;
+  color: #2f2f2f;
+  transition: color 0.3s, background-color 0.3s;
+  outline: none;
+}
+
+header a,
+div.menu a {
+  text-decoration: none;
+}
+
+div.logo {
+  width: min-content;
+}
+
+main {
+  background-color: #ededed;
+}
+
+div.home-page button {
+  width: 225px;
+  background-color: white;
+  aspect-ratio: 1 / 1;
+  border: #0067c6 medium solid;
+  border-radius: 10px;
+  margin: 20px;
+  outline: none;
+  cursor: pointer;
+  color: #0067c6;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+div.home-page i {
+  color: inherit;
+  font-size: 125px;
+}
+
+div.home-page-divider {
+  max-width: 300px;
+  height: 10px;
+  background-color: #404040;
+  border-radius: 10px;
+}
+
+div.home-page button:hover,
+button.menu:hover {
+  background-color: #0067c6;
+  color: white;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+}
+
+label {
+  margin-left: 5px;
+}
+
+select,
+input,
+.result-window {
+  border: #0067c6 2px solid;
+  border-radius: 5px;
+  margin-top: 2px;
+}
+
+input:focus,
+select:focus {
+  outline: #0067c6;
+}
+
+input::placeholder {
+  color: #2f2f2f;
+}
+
+div.form-option {
+  margin: 10px 0;
+}
+
+.button {
+  background-color: #0067c6;
+  border: #0067c6 2px solid;
+  border-radius: 10px;
+  padding: 5px 25px;
+  margin: 15px 0;
+}
+
+div.button-container {
+  text-align: right;
+}
+
+div.result-window {
+  width: 100%;
+  height: 100px;
+  background-color: white;
+}
+
+div.result > div {
+  max-width: 700px;
+}
+
+p.result-text {
+  margin: 2px;
+  padding: 0 2px;
+}
+
+.hidden {
+  display: none;
+}

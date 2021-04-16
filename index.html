@@ -8,11 +8,90 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/065b774c37.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
+    <div class="container">
+      <div class="hamburger-menu hidden">
+        <div class="menu-icon">
+          <i class="fas fa-bars blue-text font hamburger-icon view-changer" data-view="hide-menu"></i>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="home">Home</button>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="calculator">Calculator</button>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="progress">Progress</button>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="practice">Practice</button>
+        </div>
+      </div>
+      <div class="nav-bar row">
+        <div class="logo">
+          <a href="#" class="font white-text view-changer" data-view="home">Math Wizard</a>
+        </div>
+        <div class="nav-bar-menu-icon">
+          <i class="fas fa-bars white-text font view-changer" data-view="show-menu"></i>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container">
+      <div class="home-page row view" data-view="home">
+        <button name="calculator" data-view="calculator" class="view-changer column-half"><i class="view-changer fas fa-calculator" data-view="calculator"></i></button>
+        <div class="home-page-divider column-full"></div>
+        <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain" data-view="progress"></i></button>
+      </div>
+      <div class="calculator view hidden" data-view="calculator">
+        <div class="column-full row calculator-title">
+          <h1 class="font black-text">Calculator</h1>
+        </div>
+        <div class="row">
+          <form name="calculator" action="" class="column-full" id="form-calculator">
+            <div class="form-option">
+              <div class="label">
+                <label for="calculator-type" class="font black-text font-size">Type:</label>
+              </div>
+              <select required name="type" id="calculator-type" class="font grey-text font-size">
+                <option value="">Select</option>
+                <option value="simplify">Simplify</option>
+                <option value="factor">Factor</option>
+                <option value="derive">Derive</option>
+                <option value="integrate">Integrate</option>
+                <option value="trig">Trig</option>
+                <option value="log">Logarithm</option>
+              </select>
+            </div>
+            <div class="form-option">
+              <div class="label">
+                <label for="calculator-problem" class="font black-text">Problem:</label>
+              </div>
+              <input required type="text" name="problem" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
+            </div>
+            <div class="form-option button-container">
+              <button name="solve" class="white-text font font-size button">Solve</button>
+            </div>
+          </form>
+        </div>
+        <div class="row result">
+          <div class="column-full">
+            <div>
+              <label for="calculator-result" class="font font-size black-text">Result:</label>
+            </div>
+            <div id="calculator-result" class="result-window">
+              <p class="black-text font font-size result-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
