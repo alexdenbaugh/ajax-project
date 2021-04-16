@@ -14,20 +14,42 @@
 </head>
 <body>
   <header>
-    <div class="nav-bar">
-      <div class="logo">
-        <a href="" class="font white-text">Math Wizard</a>
+    <div class="container">
+      <div class="hamburger-menu hidden">
+        <div class="menu-icon">
+          <i class="fas fa-bars blue-text font hamburger-icon view-changer" data-view="hide-menu"></i>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="home">Home</button>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="calculator">Calculator</button>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="progress">Progress</button>
+        </div>
+        <div class="menu">
+          <button class="font font-size menu view-changer" data-view="practice">Practice</button>
+        </div>
+      </div>
+      <div class="nav-bar row">
+        <div class="logo">
+          <a href="#" class="font white-text view-changer" data-view="home">Math Wizard</a>
+        </div>
+        <div class="nav-bar-menu-icon">
+          <i class="fas fa-bars white-text font view-changer" data-view="show-menu"></i>
+        </div>
       </div>
     </div>
   </header>
   <main>
     <div class="container">
-      <div class="home-page row hidden" data-view="home-page">
-        <button name="calculator"><i class="fas fa-calculator"></i></button>
+      <div class="home-page row view" data-view="home">
+        <button name="calculator" data-view="calculator" class="view-changer column-half"><i class="view-changer fas fa-calculator" data-view="calculator"></i></button>
         <div class="home-page-divider"></div>
-        <button name="calculator"><i class="fas fa-brain"></i></button>
+        <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain" data-view="progress"></i></button>
       </div>
-      <div class="calculator" data-view="calculator">
+      <div class="calculator view hidden" data-view="calculator">
         <div class="column-full row calculator-title">
           <h1 class="font black-text">Calculator</h1>
         </div>

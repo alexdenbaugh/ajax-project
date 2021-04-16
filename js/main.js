@@ -58,3 +58,32 @@ $formCalculator.addEventListener('submit', function () {
 //   }
 //   data.calculator.problem = problem
 // }
+
+// var $views = document.querySelectorAll('.view');
+// var $menu = document.querySelector('.hamburger-menu');
+
+// function viewChanger (dataView) {
+//   if (dataView === 'hide-menu') {
+//     $menu.classList.add('hidden')
+//   } else if (dataView === 'show-menu') {
+//     $menu.classList.remove('hidden')
+//   } else {
+//     for (var i = 0; i < $views.length; i++) {
+//       if ($views[i].getAttribute('data-view') === dataView) {
+//         $views[i].classList.remove('hidden');
+//       } else {
+//         $views[i].classList.add('hidden');
+//       }
+//     }
+//     $menu.classList.add('hidden')
+//   }
+// }
+
+// document.addEventListener('click', function() {
+//   if (!event.target.classList.contains('view-changer')) {
+//     return
+//   } else {
+//     var dataView = event.target.getAttribute('data-view');
+//     viewChanger(dataView)
+//   }
+// })
