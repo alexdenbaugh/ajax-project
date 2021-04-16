@@ -44,7 +44,7 @@
   </header>
   <main>
     <div class="container">
-      <div class="home-page row view" data-view="home">
+      <div class="home-page row view hidden" data-view="home">
         <button name="calculator" data-view="calculator" class="view-changer column-half"><i class="view-changer fas fa-calculator" data-view="calculator"></i></button>
         <div class="home-page-divider column-full"></div>
         <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain" data-view="progress"></i></button>
@@ -89,6 +89,34 @@
               <p class="black-text font font-size result-text"></p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="practice view" data-view="practice">
+        <div class="practice-title">
+          <h1 class="font black-text">Practice</h1>
+          <p class="font black-text problem-type">Simplification</p>
+        </div>
+        <div class="practice-problem-statement">
+          <p class="font black-text problem-prompt">Simplify the following equation:</p>
+          <div class="problem">
+            <h1 class="font grey-text numerator">4x^2</h1>
+            <h1 class="font grey-text denominator">2x</h1>
+          </div>
+          <form action="">
+            <div class="row result">
+              <div class="column-full">
+                <div>
+                  <label for="answer-window" class="font font-size black-text">Answer:</label>
+                </div>
+                <div class="result-window">
+                  <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font black-text font-size"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="form-option button-container">
+              <button name="submit" class="white-text font font-size button">Submit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

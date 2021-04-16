@@ -192,6 +192,11 @@ p.result-text {
   padding: 0 2px;
 }
 
+div.practice-title,
+div.practice-problem-statement {
+  text-align: center;
+}
+
 .hidden {
   display: none;
 }
