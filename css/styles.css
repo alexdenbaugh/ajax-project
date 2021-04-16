@@ -18,6 +18,10 @@
   color: #2f2f2f;
 }
 
+.red-text {
+  color: #d10000;
+}
+
 header {
   background-color: #0067c6;
   height: 50px;
@@ -137,4 +141,9 @@ div.result-window {
 
 div.result > div {
   max-width: 700px;
+}
+
+p.result-text {
+  margin: 2px;
+  padding: 0 2px;
 }

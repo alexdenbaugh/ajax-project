@@ -44,14 +44,14 @@
                 <option value="derive">Derive</option>
                 <option value="integrate">Integrate</option>
                 <option value="trig">Trig</option>
-                <option value="logarithm">Logarithm</option>
+                <option value="log">Logarithm</option>
               </select>
             </div>
             <div class="form-option">
               <div class="label">
                 <label for="calculator-problem" class="font black-text">Problem:</label>
               </div>
-              <input required type="text" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
+              <input required type="text" name="problem" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
             </div>
             <div class="form-option button-container">
               <button name="solve" class="white-text font font-size button">Solve</button>
@@ -64,7 +64,7 @@
               <label for="calculator-result" class="font font-size black-text">Result:</label>
             </div>
             <div id="calculator-result" class="result-window">
-              <p class="black-text font font-size"></p>
+              <p class="black-text font font-size result-text"></p>
             </div>
           </div>
         </div>
