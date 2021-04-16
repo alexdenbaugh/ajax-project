@@ -29,7 +29,6 @@
 header {
   background-color: #0067c6;
   display: flex;
-  align-content: center;
   height: 50px;
   width: 100%;
 }
@@ -57,7 +56,6 @@ div.nav-bar-menu-icon i {
   background-color: white;
   border-radius: 5px;
   border: #0067c6 2px solid;
-  transition: display 0.2s;
 }
 
 .hamburger-icon {
@@ -68,8 +66,6 @@ div.nav-bar-menu-icon i {
 
 div.menu {
   width: 100%;
-  display: flex;
-  align-items: center;
 }
 
 div.menu-icon {
@@ -78,7 +74,6 @@ div.menu-icon {
   text-align: right;
   width: 100%;
   height: 45px;
-  justify-content: right;
   padding: 0 22px;
 }
 
@@ -109,12 +104,8 @@ main {
   background-color: #ededed;
 }
 
-div.home-page {
-  justify-content: center;
-}
-
 div.home-page button {
-  width: 250px;
+  width: 225px;
   background-color: white;
   aspect-ratio: 1 / 1;
   border: #0067c6 medium solid;
@@ -128,11 +119,11 @@ div.home-page button {
 
 div.home-page i {
   color: inherit;
-  font-size: 200px;
+  font-size: 125px;
 }
 
 div.home-page-divider {
-  width: 300px;
+  max-width: 300px;
   height: 10px;
   background-color: #404040;
   border-radius: 10px;
@@ -184,11 +175,6 @@ div.form-option {
 
 div.button-container {
   text-align: right;
-}
-
-.result {
-  display: flex;
-  justify-content: center;
 }
 
 div.result-window {

@@ -1,8 +1,6 @@
 header .container {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   max-width: 600px;
   margin: 0 auto;
   position: relative;
@@ -16,11 +14,8 @@ main .container {
 }
 
 div.nav-bar {
-  width: 100%;
   max-width: 600px;
-  margin: 0 auto;
   padding: 0 1.5rem;
-  display: flex;
   align-items: center;
   justify-content: space-between;
 }
@@ -28,7 +23,6 @@ div.nav-bar {
 .calculator {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .calculator-title {
@@ -42,8 +36,7 @@ div.nav-bar {
   width: 100%;
 }
 
-.column-full,
-.column-half {
+.column-full {
   width: 100%;
 }
 
@@ -53,23 +46,27 @@ input {
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 700px;
+    max-width: 800px;
   }
 
   .home-page-divider {
     display: none;
   }
 
-  .column-half {
-    width: 50%;
-  }
-
   form,
   .result-window {
-    max-width: 700px;
+    max-width: 800px;
   }
 
   input {
     width: 500px;
+  }
+
+  div.home-page button {
+    width: 200px;
+  }
+
+  div.home-page i {
+    font-size: 100px;
   }
 }
