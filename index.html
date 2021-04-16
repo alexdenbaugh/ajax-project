@@ -32,12 +32,12 @@
           <h1 class="font black-text">Calculator</h1>
         </div>
         <div class="row">
-          <form name="calculator" action="" class="column-full">
+          <form name="calculator" action="" class="column-full" id="form-calculator">
             <div class="form-option">
               <div class="label">
                 <label for="calculator-type" class="font black-text font-size">Type:</label>
               </div>
-              <select name="type" id="calculator-type" class="font grey-text font-size">
+              <select required name="type" id="calculator-type" class="font grey-text font-size">
                 <option value="">Select</option>
                 <option value="simplify">Simplify</option>
                 <option value="factor">Factor</option>
@@ -51,10 +51,10 @@
               <div class="label">
                 <label for="calculator-problem" class="font black-text">Problem:</label>
               </div>
-              <input type="text" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
+              <input required type="text" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
             </div>
             <div class="form-option button-container">
-              <button class="white-text font font-size button">Solve</button>
+              <button name="solve" class="white-text font font-size button">Solve</button>
             </div>
           </form>
         </div>
