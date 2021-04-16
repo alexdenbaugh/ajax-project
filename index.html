@@ -22,10 +22,52 @@
   </header>
   <main>
     <div class="container">
-      <div class="home-page row" data-view="home-page">
+      <div class="home-page row hidden" data-view="home-page">
         <button name="calculator"><i class="fas fa-calculator"></i></button>
         <div class="home-page-divider"></div>
         <button name="calculator"><i class="fas fa-brain"></i></button>
+      </div>
+      <div class="calculator" data-view="calculator">
+        <div class="column-full row calculator-title">
+          <h1 class="font black-text">Calculator</h1>
+        </div>
+        <div class="row">
+          <form name="calculator" action="" class="column-full">
+            <div class="form-option">
+              <div class="label">
+                <label for="calculator-type" class="font black-text font-size">Type:</label>
+              </div>
+              <select name="type" id="calculator-type" class="font grey-text font-size">
+                <option value="">Select</option>
+                <option value="simplify">Simplify</option>
+                <option value="factor">Factor</option>
+                <option value="derive">Derive</option>
+                <option value="integrate">Integrate</option>
+                <option value="trig">Trig</option>
+                <option value="logarithm">Logarithm</option>
+              </select>
+            </div>
+            <div class="form-option">
+              <div class="label">
+                <label for="calculator-problem" class="font black-text">Problem:</label>
+              </div>
+              <input type="text" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
+            </div>
+            <div class="form-option button-container">
+              <button class="white-text font font-size button">Solve</button>
+            </div>
+          </form>
+        </div>
+        <div class="row result">
+          <div class="column-full">
+            <div>
+              <label for="calculator-result" class="font font-size black-text">Result:</label>
+            </div>
+            <div id="calculator-result" class="result-window">
+              <p class="black-text font font-size"></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
