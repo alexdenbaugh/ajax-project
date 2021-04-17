@@ -195,6 +195,40 @@ p.result-text {
 div.practice-title,
 div.practice-problem-statement {
   text-align: center;
+  margin-bottom: 40px;
+}
+
+div.practice p {
+  margin: 0;
+}
+
+div.problem {
+  margin: 20px auto;
+  width: fit-content;
+}
+
+div.problem h1 {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.numerator {
+  border-bottom: #2f2f2f 2px solid;
+}
+
+.denominator {
+  border-top: #2f2f2f 2px solid;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
 }
 
 .hidden {
