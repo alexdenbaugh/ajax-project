@@ -29,3 +29,22 @@ var responses = {
 
 // eslint-disable-next-line no-unused-vars
 var typeCheck = ['arcsin', 'arccos', 'arctan', 'sin', 'cos', 'tan', 'log'];
+
+// var practicePrompts = {
+//   simplify: {
+//     type: 'Simplification',
+//     prompt: 'Simplify the following equation:'
+//   },
+//   factor: {
+//     type: 'Factoring',
+//     prompt: 'Factor the following equation:'
+//   },
+//   derive: {
+//     type: 'Derivatives',
+//     prompt: 'What is the result of the following equation?'
+//   },
+//   integrate: {
+//     type: 'Integrals',
+//     prompt: 'What is the result of the following equation?'
+//   }
+// }

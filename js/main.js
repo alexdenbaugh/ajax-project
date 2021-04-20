@@ -91,3 +91,16 @@ document.addEventListener('click', function () {
     viewChanger(dataView);
   }
 });
+
+// var $problemType = document.querySelector('.problem-type')
+// var $problemPrompt = document.querySelector('.problem-prompt')
+// var $problemType = document.querySelector('.problem-type')
+
+// function changePracticeProblem(type) {
+//   $problemType.textContent = practicePrompts[type].type;
+//   $problemPrompt.textContent = practicePrompts[type].prompt;
+// }
+
+// function practiceProblem() {
+
+// }

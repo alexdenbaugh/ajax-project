@@ -36,7 +36,7 @@ header {
 button,
 a,
 select,
-i {
+i.view-changer {
   cursor: pointer;
 }
 
@@ -203,8 +203,11 @@ div.practice p {
 }
 
 div.problem {
+  display: flex;
+  flex-wrap: wrap;
   margin: 20px auto;
   width: fit-content;
+  align-items: baseline;
 }
 
 div.problem h1 {
@@ -212,12 +215,36 @@ div.problem h1 {
   margin: 0 auto;
 }
 
-.numerator {
-  border-bottom: #2f2f2f 2px solid;
+div.integral-sign {
+  align-self: center;
+}
+
+h1.integral {
+  position: relative;
+  font-size: 80px;
+}
+
+div.plus {
+  display: flex;
+  align-self: center;
+  margin: 0 10px;
+}
+
+.no-fraction {
+  display: flex;
+  align-self: center;
+}
+
+.d-dx-integral {
+  margin-left: 20px;
+}
+
+.d-dx-derivative {
+  margin-right: 20px;
 }
 
 .denominator {
-  border-top: #2f2f2f 2px solid;
+  border-top: #2f2f2f 4px solid;
 }
 
 textarea {
