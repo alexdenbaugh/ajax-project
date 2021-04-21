@@ -208,6 +208,7 @@ div.problem {
   margin: 20px auto;
   width: fit-content;
   align-items: baseline;
+  position: relative;
 }
 
 div.problem h1 {
@@ -216,18 +217,24 @@ div.problem h1 {
 }
 
 div.integral-sign {
+  /* position: absolute; */
+  left: -60px;
   align-self: center;
 }
 
 h1.integral {
-  position: relative;
-  font-size: 80px;
+  font-size: 72px;
 }
 
-div.plus {
+div.plus,
+div.parenthesis {
   display: flex;
   align-self: center;
   margin: 0 10px;
+}
+
+div.parenthesis h1 {
+  font-size: 48px;
 }
 
 .no-fraction {
@@ -245,6 +252,11 @@ div.plus {
 
 .denominator {
   border-top: #2f2f2f 4px solid;
+}
+
+div.equation-block {
+  display: flex;
+  align-items: center;
 }
 
 textarea {
