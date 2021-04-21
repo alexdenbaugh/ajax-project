@@ -207,11 +207,12 @@ div.problem {
   flex-wrap: wrap;
   margin: 20px auto;
   width: fit-content;
-  align-items: baseline;
+  align-items: flex-end;
+  justify-content: center;
   position: relative;
 }
 
-div.problem h1 {
+div.problem h2 {
   padding: 0;
   margin: 0 auto;
 }
@@ -222,18 +223,25 @@ div.integral-sign {
   align-self: center;
 }
 
-h1.integral {
+h2.integral {
   font-size: 72px;
 }
 
 div.plus,
 div.parenthesis {
-  display: flex;
-  align-self: center;
+  /* display: flex; */
+
+  /* align-self: center; */
   margin: 0 10px;
 }
 
-div.parenthesis h1 {
+div.plus {
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+
+div.parenthesis h2 {
   font-size: 48px;
 }
 
