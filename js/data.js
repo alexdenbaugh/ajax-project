@@ -37,7 +37,16 @@ var responses = {
 var typeCheck = ['arcsin', 'arccos', 'arctan', 'sin', 'cos', 'tan', 'log'];
 
 // eslint-disable-next-line no-unused-vars
-var practiceTypes = ['simplify', 'factor'/*, 'derive', 'integrate' */];
+var trigProblemTypes = ['sin', 'cos', 'tan'];
+
+// eslint-disable-next-line no-unused-vars
+var practiceTypes = ['simplify', 'factor', 'derive'/*, 'integrate' */];
+
+// eslint-disable-next-line no-unused-vars
+var derivativeTypes = ['poly', 'trig', 'trigProduct'];
+
+// eslint-disable-next-line no-unused-vars
+var integralTypes = ['poly', 'trig', 'exponent'];
 
 // eslint-disable-next-line no-unused-vars
 var practicePrompts = {

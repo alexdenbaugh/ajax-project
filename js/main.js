@@ -109,6 +109,18 @@ document.addEventListener('click', function () {
 //   $problemPrompt.textContent = practicePrompts[type].prompt;
 //   var $equationBlock = document.createElement('div');
 //   $equationBlock.className = 'equation-block';
+//   if (type === 'derive') {
+//     var $derivaDiv = document.createElement('div');
+//     $derivaDiv.className = 'd-dx-derivative';
+//     $derivativeNumerator = document.createElement('h2');
+//     $derivativeNumerator.className = 'font grey-text numerator'
+//     $derivativeNumerator.textContent = 'd';
+//     $derivativeDenominator = document.createElement('h2');
+//     $derivativeDenominator.className = 'font grey-text denominator'
+//     $derivativeDenominator.textContent = 'dx';
+//     $derivaDiv.append($derivativeNumerator, $derivativeDenominator);
+//     $equationBlock.append($derivaDiv);
+//   }
 //   var $equationDiv = document.createElement('div');
 //   var $equationH2 = document.createElement('h2');
 //   $equationH2.className = 'font grey-text';
@@ -135,14 +147,15 @@ document.addEventListener('click', function () {
 // }
 
 // function createProblem(type) {
-//   var problem = '';
 //   if (type === 'simplify') {
-//     problem = '(' + getPolynomial(2, type) + ')(' + getPolynomial(3, type) + ')';
-//     return problem;
+//     return '(' + getPolynomial(2, type) + ')(' + getPolynomial(3, type) + ')';
 //   } else if (type === 'factor') {
-//     problem = getPolynomial(3, type);
-//     return problem;
-//   }
+//     return getPolynomial(3, type);
+//   } else if (type === 'derive') {
+//     return getDerivativeProblem();
+//   } /* else if (type === 'integrate') {
+//     return getIntegralProblem();
+//   }*/
 // }
 
 // function getPolynomial(maxPolySize, type) {
@@ -224,6 +237,29 @@ document.addEventListener('click', function () {
 //   }
 //   return polynomial.join('');
 // };
+
+// function getDerivativeProblem() {
+//   var category = derivativeTypes[randomInteger(0, derivativeTypes.length - 1)];
+//   var problem;
+//   var sign = randomInteger(0, 1);
+//   var trigType = trigProblemTypes[randomInteger(0, trigProblemTypes.length - 1)];
+//   if (category === 'poly') {
+//     return getPolynomial(3, 'simplify');
+//   } else if (category === 'trig') {
+//     problem = randomInteger(2, 9) + trigType + '(' + getPolynomial(2, 'simplify') + ')';
+//     if (sign === 0) {
+//       return '-' + problem;
+//     } else {
+//       return problem
+//     }
+//   } else if (category === 'trigProduct') {
+//     return getPolynomial(1, 'simplify') + trigType + '(' + getPolynomial(2, 'simplify') + ')';
+//   }
+// }
+
+// // function getIntegralProblem() {
+
+// // }
 
 // function randomInteger(min, max) {
 //   return Math.floor(Math.random() * (max - min + 1) + min);
