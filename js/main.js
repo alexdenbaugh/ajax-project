@@ -97,16 +97,25 @@ document.addEventListener('click', function () {
 //   data.practice.problem = createProblem(data.practice.type);
 //   getNewtonData(data.practice.type, data.practice.problem);
 //   data.practice.correctAnswer = data.calculator.problem;
-//   console.log('data.practice:', data.practice)
+//   changePracticeProblemView(data.practice.type)
 // }
 
 // var $problemType = document.querySelector('.problem-type')
 // var $problemPrompt = document.querySelector('.problem-prompt')
-// var $problemType = document.querySelector('.problem-type')
+// var $problem = document.querySelector('.problem')
 
 // function changePracticeProblemView(type) {
 //   $problemType.textContent = practicePrompts[type].type;
 //   $problemPrompt.textContent = practicePrompts[type].prompt;
+//   var $equationBlock = document.createElement('div');
+//   $equationBlock.className = 'equation-block';
+//   var $equationDiv = document.createElement('div');
+//   var $equationH2 = document.createElement('h2');
+//   $equationH2.className = 'font grey-text';
+//   $equationH2.textContent = data.practice.problem;
+//   $equationDiv.appendChild($equationH2);
+//   $equationBlock.appendChild($equationDiv);
+//   $problem.replaceChildren($equationBlock)
 // }
 
 // function createProblem(type) {
@@ -130,7 +139,6 @@ document.addEventListener('click', function () {
 //   } else if (type === 'factor') {
 //     size = maxPolySize;
 //   }
-//   console.log('size =', size)
 //   var sign;
 //   var integer;
 //   var f = factorConstants();
@@ -141,7 +149,6 @@ document.addEventListener('click', function () {
 //     } else if (type === 'factor') {
 //       integer = f[i];
 //     }
-//     console.log('integer' + (i + 1) + ' =', integer)
 //     if (integer !== 0) {
 //       if (i === 0) {
 //         polynomial.unshift('' + integer)
@@ -154,10 +161,10 @@ document.addEventListener('click', function () {
 //           polynomial.unshift(integer + 'x');
 //         }
 //       } else {
-//         if (i === 1) {
+//         if (integer === 1) {
 //           polynomial.unshift('x^' + i)
 //         } else if (integer === -1) {
-//           polynomial.unshift('-x');
+//           polynomial.unshift('-x^' + i);
 //         } else {
 //           polynomial.unshift(integer + 'x^' + i)
 //         }
@@ -181,7 +188,6 @@ document.addEventListener('click', function () {
 //     } else {
 //       for (i = 0; i < polynomial.length; i++) {
 //         sign = randomInteger(0, 1);
-//         console.log('Sign', sign)
 //         if (sign === 0) {
 //           polynomial[i] = '-' + polynomial[i];
 //         } else {
