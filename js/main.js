@@ -112,10 +112,26 @@ document.addEventListener('click', function () {
 //   var $equationDiv = document.createElement('div');
 //   var $equationH2 = document.createElement('h2');
 //   $equationH2.className = 'font grey-text';
-//   $equationH2.textContent = data.practice.problem;
+//   insertSuperscripts($equationH2, data.practice.problem);
 //   $equationDiv.appendChild($equationH2);
 //   $equationBlock.appendChild($equationDiv);
 //   $problem.replaceChildren($equationBlock)
+// }
+
+// function insertSuperscripts(element, textContent) {
+//   var terms = textContent.split('^');
+//   var $supList = [];
+//   if (terms.length === 1) {
+//     element.append(textContent);
+//     return;
+//   } else {
+//     element.textContent = terms[0];
+//     for (var i = 1; i < terms.length; i++) {
+//       $supList.push(document.createElement('sup'));
+//       $supList[i - 1].textContent = terms[i][0];
+//       element.append($supList[i - 1], terms[i].slice(1))
+//     }
+//   }
 // }
 
 // function createProblem(type) {
