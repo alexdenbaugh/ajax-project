@@ -92,62 +92,135 @@ document.addEventListener('click', function () {
   }
 });
 
+// function practiceProblem() {
+//   data.practice.type = practiceTypes[randomInteger(0, practiceTypes.length - 1)];
+//   data.practice.problem = createProblem(data.practice.type);
+//   getNewtonData(data.practice.type, data.practice.problem);
+//   data.practice.correctAnswer = data.calculator.problem;
+//   console.log('data.practice:', data.practice)
+// }
+
 // var $problemType = document.querySelector('.problem-type')
 // var $problemPrompt = document.querySelector('.problem-prompt')
 // var $problemType = document.querySelector('.problem-type')
 
-// function changePracticeProblem(type) {
+// function changePracticeProblemView(type) {
 //   $problemType.textContent = practicePrompts[type].type;
 //   $problemPrompt.textContent = practicePrompts[type].prompt;
 // }
 
-// function practiceProblem() {
-
+// function createProblem(type) {
+//   var problem = '';
+//   if (type === 'simplify') {
+//     problem = '(' + getPolynomial(2, type) + ')(' + getPolynomial(3, type) + ')';
+//     return problem;
+//   } else if (type === 'factor') {
+//     problem = getPolynomial(3, type);
+//     return problem;
+//   }
 // }
 
-// function getPolynomial(maxPolySize) {
+// function getPolynomial(maxPolySize, type) {
 //   if (maxPolySize < 1) {
-//     return '0';
+//     return null;
 //   }
-//   var size = randomPositiveInteger(1, maxPolySize);
+//   var size;
+//   if (type === 'simplify') {
+//     size = randomInteger(1, maxPolySize);
+//   } else if (type === 'factor') {
+//     size = maxPolySize;
+//   }
+//   console.log('size =', size)
+//   var sign;
 //   var integer;
+//   var f = factorConstants();
 //   var polynomial = [];
-//   console.log('Size:', size);
 //   for (var i = 0; i < size; i++) {
-//     integer = randomPositiveInteger(0, 10)
-//     console.log('Integer' + (i + 1) + ':', integer)
+//     if (type === 'simplify') {
+//       integer = randomInteger(0, 10);
+//     } else if (type === 'factor') {
+//       integer = f[i];
+//     }
+//     console.log('integer' + (i + 1) + ' =', integer)
 //     if (integer !== 0) {
 //       if (i === 0) {
-//         polynomial.unshift(integer)
+//         polynomial.unshift('' + integer)
 //       } else if (i === 1) {
 //         if (integer === 1) {
 //           polynomial.unshift('x');
+//         } else if (integer === -1) {
+//           polynomial.unshift('-x');
 //         } else {
 //           polynomial.unshift(integer + 'x');
 //         }
 //       } else {
 //         if (i === 1) {
 //           polynomial.unshift('x^' + i)
+//         } else if (integer === -1) {
+//           polynomial.unshift('-x');
 //         } else {
 //           polynomial.unshift(integer + 'x^' + i)
 //         }
 //       }
 //     }
 //   }
-//   if (polynomial.length <= 1) {
-//     integer = randomPositiveInteger(1, 10);
-//     console.log('Integer Back Up:', integer)
-//     if (integer === 1) {
-//       return 'x';
+//   if (type === 'simplify') {
+//     if (polynomial.length <= 1) {
+//       integer = randomInteger(1, 10);
+//       sign = randomInteger(0, 1);
+//       if (sign === 0) {
+//         sign = '-';
+//       } else {
+//         sign = '+';
+//       }
+//       if (integer === 1) {
+//         polynomial = [sign + 'x'];
+//       } else {
+//         polynomial = [sign + integer + 'x'];
+//       }
 //     } else {
-//       return integer + 'x';
+//       for (i = 0; i < polynomial.length; i++) {
+//         sign = randomInteger(0, 1);
+//         console.log('Sign', sign)
+//         if (sign === 0) {
+//           polynomial[i] = '-' + polynomial[i];
+//         } else {
+//           polynomial[i] = '+' + polynomial[i];
+//         }
+//       }
 //     }
-//   } else {
-//     return polynomial.join('+')
 //   }
-//   console.log('Polynomial:', polynomial);
+//   if (type === 'factor') {
+//     for (i = 1; i < polynomial.length; i++) {
+//       if (polynomial[i][0] !== '-') {
+//         polynomial[i] = '+' + polynomial[i];
+//       }
+//     }
+//   }
+//   if (polynomial[0][0] === '+') {
+//     polynomial[0] = polynomial[0].slice(1);
+//   }
+//   return polynomial.join('');
 // };
 
-// function randomPositiveInteger(min, max) {
+// function randomInteger(min, max) {
 //   return Math.floor(Math.random() * (max - min + 1) + min);
 // }
+
+// function factorConstants() {
+//   var integers = [randomInteger(1, 5), randomInteger(1, 5), randomInteger(1, 5)];
+//   var sign;
+//   var a;
+//   var b;
+//   var c;
+//   for (var i = 0; i < integers.length; i++) {
+//     sign = randomInteger(0, 1);
+//     if (sign === 0) {
+//       integers[i] = -integers[i]
+//     }
+//   }
+//   a = integers[0];
+//   b = integers[0] * (integers[1] + integers[2]);
+//   c = integers[0] * integers[1] * integers[2];
+//   return [c, b, a];
+// };

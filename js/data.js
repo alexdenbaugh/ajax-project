@@ -7,12 +7,18 @@ var data = {
     result: null
   },
   practice: {
+    type: '',
+    problem: '',
+    userAnswer: '',
+    correctAnswer: '',
+    result: null
+  },
+  progress: {
     simplify: [],
     factor: [],
     derive: [],
     integrate: []
-  },
-  response: null
+  }
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -29,6 +35,9 @@ var responses = {
 
 // eslint-disable-next-line no-unused-vars
 var typeCheck = ['arcsin', 'arccos', 'arctan', 'sin', 'cos', 'tan', 'log'];
+
+// eslint-disable-next-line no-unused-vars
+var practiceTypes = ['simplify', 'factor', 'derive', 'integrate'];
 
 // eslint-disable-next-line no-unused-vars
 var practicePrompts = {
