@@ -105,13 +105,49 @@ document.addEventListener('click', function () {
 
 // }
 
-// function getPolynomial(maxSize) {
-//   var x = 'x';
-
-// }
+// function getPolynomial(maxPolySize) {
+//   if (maxPolySize < 1) {
+//     return '0';
+//   }
+//   var size = randomPositiveInteger(1, maxPolySize);
+//   var integer;
+//   var polynomial = [];
+//   console.log('Size:', size);
+//   for (var i = 0; i < size; i++) {
+//     integer = randomPositiveInteger(0, 10)
+//     console.log('Integer' + (i + 1) + ':', integer)
+//     if (integer !== 0) {
+//       if (i === 0) {
+//         polynomial.unshift(integer)
+//       } else if (i === 1) {
+//         if (integer === 1) {
+//           polynomial.unshift('x');
+//         } else {
+//           polynomial.unshift(integer + 'x');
+//         }
+//       } else {
+//         if (i === 1) {
+//           polynomial.unshift('x^' + i)
+//         } else {
+//           polynomial.unshift(integer + 'x^' + i)
+//         }
+//       }
+//     }
+//   }
+//   if (polynomial.length <= 1) {
+//     integer = randomPositiveInteger(1, 10);
+//     console.log('Integer Back Up:', integer)
+//     if (integer === 1) {
+//       return 'x';
+//     } else {
+//       return integer + 'x';
+//     }
+//   } else {
+//     return polynomial.join('+')
+//   }
+//   console.log('Polynomial:', polynomial);
+// };
 
 // function randomPositiveInteger(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
 //   return Math.floor(Math.random() * (max - min + 1) + min);
 // }
