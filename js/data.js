@@ -40,10 +40,10 @@ var typeCheck = ['arcsin', 'arccos', 'arctan', 'sin', 'cos', 'tan', 'log'];
 var trigProblemTypes = ['sin', 'cos'];
 
 // eslint-disable-next-line no-unused-vars
-var practiceTypes = [/* 'simplify', 'factor', 'derive', */'integrate'];
+var practiceTypes = ['simplify', 'factor', 'derive', 'integrate'];
 
 // eslint-disable-next-line no-unused-vars
-var derivativeTypes = ['poly', 'trig', 'trigProduct'];
+var derivativeTypes = ['poly', 'trig', 'trigExponent'];
 
 // eslint-disable-next-line no-unused-vars
 var integralTypes = ['exponent'];
