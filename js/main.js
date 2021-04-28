@@ -1,4 +1,4 @@
-/* global data, practiceTypes, practicePrompts, derivativeTypes, trigProblemTypes, integralTypes, trigProblemTypes */
+/* global data, responses, typeCheck, practiceTypes, practicePrompts, derivativeTypes, trigProblemTypes, integralTypes, trigProblemTypes */
 
 var $pResult = document.querySelector('.result-text');
 
@@ -19,7 +19,6 @@ var $formCalculator = document.querySelector('#form-calculator');
 $formCalculator.addEventListener('submit', function () {
   event.preventDefault();
   $pResult.classList.remove('red-text');
-  $pResult.classList.add('black-text');
   $pResult.textContent = 'Solving...';
   data.calculator.type = $formCalculator.elements.type.value;
   data.calculator.problem = $formCalculator.elements.problem.value;
@@ -29,10 +28,8 @@ $formCalculator.addEventListener('submit', function () {
 });
 
 function updateResult(status) {
-  if (status === 400 || (!data.calculator.result && data.calculator.result !== 0 && isNaN(data.calculator.result))) {
-    // eslint-disable-next-line no-undef
+  if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0 && isNaN(data.calculator.result))) {
     $pResult.textContent = responses[data.calculator.type];
-    $pResult.classList.remove('black-text');
     $pResult.classList.add('red-text');
   } else {
     $pResult.textContent = data.calculator.result;
@@ -42,9 +39,7 @@ function updateResult(status) {
 function formatCheck() {
   var problem = data.calculator.problem;
   var check = false;
-  // eslint-disable-next-line no-undef
   for (var i = 0; i < typeCheck.length; i++) {
-    // eslint-disable-next-line no-undef
     if (problem.startsWith(typeCheck[i])) {
       check = true;
       break;

@@ -10,10 +10,6 @@
   color: #ededed;
 }
 
-.black-text {
-  color: black;
-}
-
 .grey-text {
   color: #2f2f2f;
 }
@@ -36,6 +32,7 @@ header {
 button,
 a,
 select,
+label,
 i.view-changer {
   cursor: pointer;
 }
@@ -198,10 +195,6 @@ div.practice-problem-statement {
   margin-bottom: 40px;
 }
 
-div.practice-problem-statement {
-  min-height: 123px;
-}
-
 div.practice p {
   margin: 0;
 }
@@ -211,9 +204,7 @@ div.problem {
   flex-wrap: wrap;
   margin: 20px auto;
   width: fit-content;
-  align-items: center;
   justify-content: center;
-  position: relative;
   min-height: 83px;
 }
 

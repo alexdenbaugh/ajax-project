@@ -44,20 +44,20 @@
   </header>
   <main>
     <div class="container">
-      <div class="home-page row view hidden" data-view="home">
+      <div class="home-page row view" data-view="home">
         <button name="calculator" data-view="calculator" class="view-changer column-half"><i class="view-changer fas fa-calculator" data-view="calculator"></i></button>
         <div class="home-page-divider column-full"></div>
         <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain" data-view="progress"></i></button>
       </div>
       <div class="calculator view hidden" data-view="calculator">
         <div class="column-full row calculator-title">
-          <h1 class="font black-text">Calculator</h1>
+          <h1 class="font">Calculator</h1>
         </div>
         <div class="row">
           <form name="calculator" action="" class="column-full" id="form-calculator">
             <div class="form-option">
               <div class="label">
-                <label for="calculator-type" class="font black-text font-size">Type:</label>
+                <label for="calculator-type" class="font font-size">Type:</label>
               </div>
               <select required name="type" id="calculator-type" class="font grey-text font-size">
                 <option value="">Select</option>
@@ -71,7 +71,7 @@
             </div>
             <div class="form-option">
               <div class="label">
-                <label for="calculator-problem" class="font black-text">Problem:</label>
+                <label for="calculator-problem" class="font">Problem:</label>
               </div>
               <input required type="text" name="problem" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
             </div>
@@ -83,61 +83,32 @@
         <div class="row result">
           <div class="column-full">
             <div>
-              <label for="calculator-result" class="font font-size black-text">Result:</label>
+              <label for="calculator-result" class="font font-size">Result:</label>
             </div>
             <div id="calculator-result" class="result-window">
-              <p class="black-text font font-size result-text"></p>
+              <p class="font font-size result-text"></p>
             </div>
           </div>
         </div>
       </div>
-      <div class="practice view" data-view="practice">
+      <div class="practice view hidden" data-view="practice">
         <div class="practice-title">
-          <h1 class="font black-text">Practice</h1>
-          <p class="font black-text problem-type">Simplification</p>
+          <h1 class="font">Practice</h1>
+          <p class="font problem-type">Simplification</p>
         </div>
         <div class="practice-problem-statement">
-          <p class="font black-text problem-prompt">Simplify the following equation:</p>
+          <p class="font problem-prompt">Simplify the following equation:</p>
           <div class="problem">
-            <div class="integral-sign">
-              <h2 class="font grey-text integral">&int;</h2>
-            </div>
-            <div class="equation-block">
-              <div>
-                <h2 class="font grey-text">((4x)<sup>2</sup>)</h2>
-              </div>
-              <div class="parenthesis">
-                <h2 class="font grey-text">(</h2>
-              </div>
-              <div>
-                <h2 class="font grey-text numerator">((4x)<sup>1/2</sup>)</h2>
-                <h2 class="font grey-text denominator">2x</h2>
-              </div>
-              <div class="plus">
-                <h2 class="font grey-text">+</h2>
-              </div>
-              <div class="no-fraction">
-                <h2 class="font grey-text numerator">x<sup>2</sup></h2>
-                <h2 class="font grey-text denominator">dx</h2>
-              </div>
-              <div class="parenthesis">
-                <h2 class="font grey-text">)</h2>
-              </div>
-            </div>
-            <div class="d-dx-integral">
-              <h2 class="font grey-text numerator">d</h2>
-              <h2 class="font grey-text denominator">dx</h2>
-            </div>
           </div>
         </div>
         <form action="" id="form-practice">
           <div class="row result">
             <div class="column-full">
               <div>
-                <label for="answer-window" class="font font-size black-text">Answer:</label>
+                <label for="answer-window" class="font font-size">Answer:</label>
               </div>
               <div class="result-window">
-                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font black-text font-size" placeholder="Please type answer using '()', '^' when nesessary, and without spaces."></textarea>
+                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font font-size" placeholder="Please type answer using '()', '^' when nesessary, and without spaces."></textarea>
               </div>
             </div>
           </div>
