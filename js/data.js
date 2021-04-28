@@ -46,7 +46,7 @@ var practiceTypes = ['simplify', 'factor', 'derive', 'integrate'];
 var derivativeTypes = ['poly', 'trig', 'trigExponent'];
 
 // eslint-disable-next-line no-unused-vars
-var integralTypes = ['exponent'];
+var integralTypes = ['poly', 'trig', 'exponent'];
 
 // eslint-disable-next-line no-unused-vars
 var practicePrompts = {
