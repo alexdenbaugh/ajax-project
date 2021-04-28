@@ -1,4 +1,4 @@
-/* exported data */
+/* exported data, responses, typeCheck, practiceTypes, practicePrompts, derivativeTypes, trigProblemTypes, integralTypes, trigProblemTypes */
 
 var data = {
   calculator: {
@@ -7,15 +7,20 @@ var data = {
     result: null
   },
   practice: {
+    type: '',
+    problem: '',
+    userAnswer: '',
+    correctAnswer: '',
+    result: null
+  },
+  progress: {
     simplify: [],
     factor: [],
     derive: [],
     integrate: []
-  },
-  response: null
+  }
 };
 
-// eslint-disable-next-line no-unused-vars
 var responses = {
   correct: 'Correct!',
   incorrect: 'Incorrect',
@@ -27,5 +32,31 @@ var responses = {
   log: 'Please use following format: log2(8). Do not include variables in problem. For log base 10, use log10(x).'
 };
 
-// eslint-disable-next-line no-unused-vars
 var typeCheck = ['arcsin', 'arccos', 'arctan', 'sin', 'cos', 'tan', 'log'];
+
+var trigProblemTypes = ['sin', 'cos'];
+
+var practiceTypes = ['simplify', 'factor', 'derive', 'integrate'];
+
+var derivativeTypes = ['poly', 'trig', 'trigExponent'];
+
+var integralTypes = ['poly', 'trig', 'exponent'];
+
+var practicePrompts = {
+  simplify: {
+    type: 'Simplification',
+    prompt: 'Simplify the following equation:'
+  },
+  factor: {
+    type: 'Factoring',
+    prompt: 'Factor the following equation:'
+  },
+  derive: {
+    type: 'Derivatives',
+    prompt: 'What is the result of the following equation?'
+  },
+  integrate: {
+    type: 'Integrals',
+    prompt: 'What is the result of the following equation?'
+  }
+};
