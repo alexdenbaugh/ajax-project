@@ -1,4 +1,4 @@
-/* exported data */
+/* exported data, responses, typeCheck, practiceTypes, practicePrompts, derivativeTypes, trigProblemTypes, integralTypes, trigProblemTypes */
 
 var data = {
   calculator: {
@@ -21,7 +21,6 @@ var data = {
   }
 };
 
-// eslint-disable-next-line no-unused-vars
 var responses = {
   correct: 'Correct!',
   incorrect: 'Incorrect',
@@ -33,22 +32,16 @@ var responses = {
   log: 'Please use following format: log2(8). Do not include variables in problem. For log base 10, use log10(x).'
 };
 
-// eslint-disable-next-line no-unused-vars
 var typeCheck = ['arcsin', 'arccos', 'arctan', 'sin', 'cos', 'tan', 'log'];
 
-// eslint-disable-next-line no-unused-vars
 var trigProblemTypes = ['sin', 'cos'];
 
-// eslint-disable-next-line no-unused-vars
 var practiceTypes = ['simplify', 'factor', 'derive', 'integrate'];
 
-// eslint-disable-next-line no-unused-vars
 var derivativeTypes = ['poly', 'trig', 'trigExponent'];
 
-// eslint-disable-next-line no-unused-vars
 var integralTypes = ['poly', 'trig', 'exponent'];
 
-// eslint-disable-next-line no-unused-vars
 var practicePrompts = {
   simplify: {
     type: 'Simplification',

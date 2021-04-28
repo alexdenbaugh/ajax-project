@@ -214,7 +214,6 @@ div.problem h2 {
 }
 
 div.integral-sign {
-  /* position: absolute; */
   left: -60px;
   align-self: center;
 }
@@ -225,9 +224,6 @@ h2.integral {
 
 div.plus,
 div.parenthesis {
-  /* display: flex; */
-
-  /* align-self: center; */
   margin: 0 10px;
 }
 
