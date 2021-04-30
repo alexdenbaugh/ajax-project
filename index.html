@@ -44,7 +44,7 @@
   </header>
   <main>
     <div class="container">
-      <div class="home-page row view hidden" data-view="home">
+      <div class="home-page row view" data-view="home">
         <button name="calculator" data-view="calculator" class="view-changer column-half"><i class="view-changer fas fa-calculator" data-view="calculator"></i></button>
         <div class="home-page-divider column-full"></div>
         <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain" data-view="progress"></i></button>
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="practice-settings view" data-view="practice-settings">
+      <div class="practice-settings view hidden" data-view="practice-settings">
         <div class="practice-settings-title">
           <h1 class="font">Practice</h1>
           <p class="font problem-settings-prompt">What topics would you like to practice?</p>
@@ -137,12 +137,11 @@
                 <label class="font" for="practice-settings-integrate">Integration</label>
               </div>
               <div class="equation-block">
-                <div class="d-dx-derivative derivative-settings-example">
-                  <h3 class="font">d</h3>
-                  <h3 class="font">dx</h3>
+                <div class="integral-sign">
+                  <h1 class="font">∫</h1>
                 </div>
                 <div>
-                  <h3 class="font">4x<sup>2</sup>+3x+2 <i class="fas fa-arrow-right"></i> 8x+3</h3>
+                  <h3 class="font">sin(x) dx <i class="fas fa-arrow-right"></i> -cos(x)</h3>
                 </div>
               </div>
             </div>

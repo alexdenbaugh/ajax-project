@@ -97,7 +97,7 @@ div.logo {
   width: min-content;
 }
 
-main {
+body {
   background-color: #ededed;
 }
 
@@ -285,8 +285,6 @@ div.practice-settings-title {
 div.practice-settings-options {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
 }
 
 div.practice-setting-option {
@@ -294,7 +292,6 @@ div.practice-setting-option {
 }
 
 div.practice-setting-option div.equation-block {
-  display: flex;
   justify-content: center;
 }
 
