@@ -98,20 +98,56 @@
         </div>
         <form action="" name="practice-settings" id="practice-settings">
           <div class="practice-settings-options">
-            <div>
+            <div class="practice-setting-option column-one-fourth">
               <div>
                 <input checked type="checkbox" name="simplify" id="practice-settings-simplify">
-                <label class="font font-size" for="practice-settings-simplify">Simplification</label>
+                <label class="font" for="practice-settings-simplify">Simplification</label>
               </div>
-              <div>
-                <h3 class="font">(2x+1)(3x<sup>2</sup>-4x-3)</h3>
+              <div class="equation-block">
+                <h3 class="font">(x+2)(x+1) <i class="fas fa-arrow-right"></i> x<sup>2</sup>+3x+2</h3>
               </div>
             </div>
-            <input class="font font-size" type="checkbox" name="factor">
-            <input type="checkbox" name="derive">
-            <input type="checkbox" name="integrate">
+            <div class="practice-setting-option column-one-fourth">
+              <div>
+                <input type="checkbox" name="factor" id="practice-settings-factor">
+                <label class="font" for="practice-settings-factor">Factoring</label>
+              </div>
+              <div class="equation-block">
+                <h3 class="font">x<sup>2</sup>+3x+2 <i class="fas fa-arrow-right"></i> (x+2)(x+1)</h3>
+              </div>
+            </div>
+            <div class="practice-setting-option column-one-fourth">
+              <div>
+                <input class="blue-text" type="checkbox" name="derive" id="practice-settings-derive">
+                <label class="font" for="practice-settings-derive">Derivation</label>
+              </div>
+              <div class="equation-block">
+                <div class="d-dx-derivative derivative-settings-example">
+                  <h3 class="font">d</h3>
+                  <h3 class="font">dx</h3>
+                </div>
+                <div class="equation-block">
+                  <h3 class="font">4x<sup>2</sup>+3x+2 <i class="fas fa-arrow-right"></i> 8x+3</h3>
+                </div>
+              </div>
+            </div>
+            <div class="practice-setting-option column-one-fourth">
+              <div>
+                <input type="checkbox" name="integrate" id="practice-settings-integrate">
+                <label class="font" for="practice-settings-integrate">Integration</label>
+              </div>
+              <div class="equation-block">
+                <div class="d-dx-derivative derivative-settings-example">
+                  <h3 class="font">d</h3>
+                  <h3 class="font">dx</h3>
+                </div>
+                <div>
+                  <h3 class="font">4x<sup>2</sup>+3x+2 <i class="fas fa-arrow-right"></i> 8x+3</h3>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="">
+          <div class="practice-setting-button">
             <button class="practice-settings-button white-text font font-size button">Start</button>
           </div>
         </form>
