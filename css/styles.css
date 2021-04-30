@@ -1,4 +1,12 @@
-.font {
+body {
+  background-color: #ededed;
+  font-family: 'Righteous', cursive;
+}
+
+button,
+input,
+select,
+textarea {
   font-family: 'Righteous', cursive;
 }
 
@@ -95,10 +103,6 @@ div.menu a {
 
 div.logo {
   width: min-content;
-}
-
-body {
-  background-color: #ededed;
 }
 
 div.home-page button {

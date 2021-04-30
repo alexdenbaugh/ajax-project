@@ -127,10 +127,10 @@ function changePracticeProblemView(type) {
     var $derivaDiv = document.createElement('div');
     $derivaDiv.className = 'd-dx-derivative';
     var $derivativeNumerator = document.createElement('h2');
-    $derivativeNumerator.className = 'font grey-text numerator';
+    $derivativeNumerator.className = 'grey-text numerator';
     $derivativeNumerator.textContent = 'd';
     var $derivativeDenominator = document.createElement('h2');
-    $derivativeDenominator.className = 'font grey-text denominator';
+    $derivativeDenominator.className = 'grey-text denominator';
     $derivativeDenominator.textContent = 'dx';
     $derivaDiv.append($derivativeNumerator, $derivativeDenominator);
     $equationBlock.append($derivaDiv);
@@ -138,20 +138,20 @@ function changePracticeProblemView(type) {
     var $integralSignDiv = document.createElement('div');
     $integralSignDiv.className = 'integral-sign';
     var $integralSign = document.createElement('h2');
-    $integralSign.className = 'font grey-text integral';
+    $integralSign.className = 'grey-text integral';
     $integralSign.textContent = '∫';
     $integralSignDiv.append($integralSign);
     $equationBlock.append($integralSignDiv);
     var $integrateDivEnd = document.createElement('div');
     $integrateDivEnd.className = 'd-dx-integral';
     var $integralNumerator = document.createElement('h2');
-    $integralNumerator.className = 'font grey-text numerator';
+    $integralNumerator.className = 'grey-text numerator';
     $integralNumerator.textContent = 'dx';
     $integrateDivEnd.append($integralNumerator);
   }
   var $equationDiv = document.createElement('div');
   var $equationH2 = document.createElement('h2');
-  $equationH2.className = 'font grey-text';
+  $equationH2.className = 'grey-text';
   insertSuperscripts($equationH2, data.practice.problem);
   $equationDiv.appendChild($equationH2);
   $equationBlock.appendChild($equationDiv);
