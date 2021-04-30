@@ -17,27 +17,27 @@
     <div class="container">
       <div class="hamburger-menu hidden">
         <div class="menu-icon">
-          <i class="fas fa-bars blue-text font hamburger-icon view-changer" data-view="hide-menu"></i>
+          <i class="fas fa-bars blue-text hamburger-icon view-changer" data-view="hide-menu"></i>
         </div>
         <div class="menu">
-          <button class="font font-size menu view-changer" data-view="home">Home</button>
+          <button class="font-size menu view-changer" data-view="home">Home</button>
         </div>
         <div class="menu">
-          <button class="font font-size menu view-changer" data-view="calculator">Calculator</button>
+          <button class="font-size menu view-changer" data-view="calculator">Calculator</button>
         </div>
         <div class="menu">
-          <button class="font font-size menu view-changer" data-view="progress">Progress</button>
+          <button class="font-size menu view-changer" data-view="progress">Progress</button>
         </div>
         <div class="menu">
-          <button class="font font-size menu view-changer" data-view="practice">Practice</button>
+          <button class="font-size menu view-changer" data-view="practice-settings">Practice</button>
         </div>
       </div>
       <div class="nav-bar row">
         <div class="logo">
-          <a href="#" class="font white-text view-changer" data-view="home">Math Wizard</a>
+          <a href="#" class="white-text view-changer" data-view="home">Math Wizard</a>
         </div>
         <div class="nav-bar-menu-icon">
-          <i class="fas fa-bars white-text font view-changer" data-view="show-menu"></i>
+          <i class="fas fa-bars white-text view-changer" data-view="show-menu"></i>
         </div>
       </div>
     </div>
@@ -51,15 +51,15 @@
       </div>
       <div class="calculator view hidden" data-view="calculator">
         <div class="column-full row calculator-title">
-          <h1 class="font">Calculator</h1>
+          <h1>Calculator</h1>
         </div>
         <div class="row">
           <form name="calculator" action="" class="column-full" id="form-calculator">
             <div class="form-option">
               <div class="label">
-                <label for="calculator-type" class="font font-size">Type:</label>
+                <label for="calculator-type" class="font-size">Type:</label>
               </div>
-              <select required name="type" id="calculator-type" class="font grey-text font-size">
+              <select required name="type" id="calculator-type" class="grey-text font-size">
                 <option value="">Select</option>
                 <option value="simplify">Simplify</option>
                 <option value="factor">Factor</option>
@@ -71,33 +71,96 @@
             </div>
             <div class="form-option">
               <div class="label">
-                <label for="calculator-problem" class="font">Problem:</label>
+                <label for="calculator-problem">Problem:</label>
               </div>
-              <input required type="text" name="problem" id="calculator-problem" class="font grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
+              <input required type="text" name="problem" id="calculator-problem" class="grey-text font-size" placeholder="ex: 3x^2+2/3x^3+8">
             </div>
             <div class="form-option button-container">
-              <button name="solve" class="white-text font font-size button">Solve</button>
+              <button name="solve" class="white-text font-size button">Solve</button>
             </div>
           </form>
         </div>
         <div class="row result">
           <div class="column-full">
             <div>
-              <label for="calculator-result" class="font font-size">Result:</label>
+              <label for="calculator-result" class="font-size">Result:</label>
             </div>
             <div id="calculator-result" class="result-window">
-              <p class="font font-size result-text"></p>
+              <p class="font-size result-text"></p>
             </div>
           </div>
         </div>
       </div>
+      <div class="practice-settings view hidden" data-view="practice-settings">
+        <div class="practice-settings-title">
+          <h1>Practice</h1>
+          <p class="problem-settings-prompt">What topics would you like to practice?</p>
+        </div>
+        <form action="" name="practice-settings" id="practice-settings">
+          <div class="practice-settings-options">
+            <div class="practice-setting-option column-one-fourth">
+              <div>
+                <input checked type="checkbox" name="simplify" id="practice-settings-simplify">
+                <label for="practice-settings-simplify">Simplification</label>
+              </div>
+              <div class="equation-block">
+                <h3>(x+2)(x+1) <i class="fas fa-arrow-right"></i> x<sup>2</sup>+3x+2</h3>
+              </div>
+            </div>
+            <div class="practice-setting-option column-one-fourth">
+              <div>
+                <input type="checkbox" name="factor" id="practice-settings-factor">
+                <label for="practice-settings-factor">Factoring</label>
+              </div>
+              <div class="equation-block">
+                <h3>x<sup>2</sup>+3x+2 <i class="fas fa-arrow-right"></i> (x+2)(x+1)</h3>
+              </div>
+            </div>
+            <div class="practice-setting-option column-one-fourth">
+              <div>
+                <input type="checkbox" name="derive" id="practice-settings-derive">
+                <label for="practice-settings-derive">Derivation</label>
+              </div>
+              <div class="equation-block">
+                <div class="d-dx-derivative derivative-settings-example">
+                  <h3>d</h3>
+                  <h3>dx</h3>
+                </div>
+                <div class="equation-block">
+                  <h3>4x<sup>2</sup>+3x+2 <i class="fas fa-arrow-right"></i> 8x+3</h3>
+                </div>
+              </div>
+            </div>
+            <div class="practice-setting-option column-one-fourth">
+              <div>
+                <input type="checkbox" name="integrate" id="practice-settings-integrate">
+                <label for="practice-settings-integrate">Integration</label>
+              </div>
+              <div class="equation-block">
+                <div class="integral-sign">
+                  <h1>∫</h1>
+                </div>
+                <div>
+                  <h3>sin(x) dx <i class="fas fa-arrow-right"></i> -cos(x)</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="practice-setting-button">
+            <button class="practice-settings-button white-text font-size button" data-view="practice">Start</button>
+          </div>
+        </form>
+        <div class="practice-settings-error hidden">
+          <h3 class="red-text">Please select one of the above problem types to continue.</h3>
+        </div>
+      </div>
       <div class="practice view hidden" data-view="practice">
         <div class="practice-title">
-          <h1 class="font">Practice</h1>
-          <p class="font problem-type">Simplification</p>
+          <h1>Practice</h1>
+          <p class="problem-type">Simplification</p>
         </div>
         <div class="practice-problem-statement">
-          <p class="font problem-prompt">Simplify the following equation:</p>
+          <p class="problem-prompt">Simplify the following equation:</p>
           <div class="problem">
           </div>
         </div>
@@ -105,15 +168,15 @@
           <div class="row result">
             <div class="column-full">
               <div>
-                <label for="answer-window" class="font font-size">Answer:</label>
+                <label for="answer-window" class="font-size">Answer:</label>
               </div>
               <div class="result-window">
-                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font font-size" placeholder="Please type answer using '()', '^' when nesessary, and without spaces."></textarea>
+                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font-size" placeholder="Please type answer using '()', '^' when nesessary, and without spaces."></textarea>
               </div>
             </div>
           </div>
           <div class="form-option button-container">
-            <button name="submit" class="white-text font font-size button">Submit</button>
+            <button name="submit" class="white-text font-size button">Submit</button>
           </div>
         </form>
       </div>

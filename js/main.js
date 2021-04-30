@@ -2,14 +2,18 @@
 
 var $pResult = document.querySelector('.result-text');
 
-function getNewtonData(type, problem) {
+function getNewtonData(type, problem, feature) {
   var xhr = new XMLHttpRequest();
   problem = encodeURIComponent(problem);
   xhr.open('GET', 'https://newton.now.sh/api/v2/' + type + '/' + problem);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    data.calculator.result = xhr.response.result;
-    updateResult(xhr.status);
+    if (feature === 'calculator') {
+      data.calculator.result = xhr.response.result;
+      updateResult(xhr.status);
+    } else if (feature === 'practice') {
+      data.practice.correctAnswer = xhr.response.result;
+    }
   });
   xhr.send();
 }
@@ -24,11 +28,14 @@ $formCalculator.addEventListener('submit', function () {
   data.calculator.problem = $formCalculator.elements.problem.value;
   data.calculator.result = null;
   formatCheck();
-  getNewtonData(data.calculator.type, data.calculator.problem);
+  getNewtonData(data.calculator.type, data.calculator.problem, 'calculator');
 });
 
 function updateResult(status) {
-  if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0 && isNaN(data.calculator.result))) {
+  if (data.calculator.type === 'log' && isNaN(data.calculator.result)) {
+    $pResult.textContent = responses[data.calculator.type];
+    $pResult.classList.add('red-text');
+  } else if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0)) {
     $pResult.textContent = responses[data.calculator.type];
     $pResult.classList.add('red-text');
   } else {
@@ -61,12 +68,17 @@ function formatCheck() {
 
 var $views = document.querySelectorAll('.view');
 var $menu = document.querySelector('.hamburger-menu');
+var $practiceSettingsError = document.querySelector('.practice-settings-error');
 
 function viewChanger(dataView) {
   if (dataView === 'hide-menu') {
     $menu.classList.add('hidden');
   } else if (dataView === 'show-menu') {
     $menu.classList.remove('hidden');
+  } else if (dataView === 'show-settings-error') {
+    $practiceSettingsError.classList.remove('hidden');
+  } else if (dataView === 'hide-settings-error') {
+    $practiceSettingsError.classList.add('hidden');
   } else {
     for (var i = 0; i < $views.length; i++) {
       if ($views[i].getAttribute('data-view') === dataView) {
@@ -96,10 +108,9 @@ $practiceForm.addEventListener('submit', function () {
 });
 
 function practiceProblem() {
-  data.practice.type = practiceTypes[randomInteger(0, practiceTypes.length - 1)];
+  data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];
   data.practice.problem = createProblem(data.practice.type);
-  getNewtonData(data.practice.type, data.practice.problem);
-  data.practice.correctAnswer = data.calculator.problem;
+  getNewtonData(data.practice.type, data.practice.problem, 'practice');
   changePracticeProblemView(data.practice.type);
 }
 
@@ -116,10 +127,10 @@ function changePracticeProblemView(type) {
     var $derivaDiv = document.createElement('div');
     $derivaDiv.className = 'd-dx-derivative';
     var $derivativeNumerator = document.createElement('h2');
-    $derivativeNumerator.className = 'font grey-text numerator';
+    $derivativeNumerator.className = 'grey-text numerator';
     $derivativeNumerator.textContent = 'd';
     var $derivativeDenominator = document.createElement('h2');
-    $derivativeDenominator.className = 'font grey-text denominator';
+    $derivativeDenominator.className = 'grey-text denominator';
     $derivativeDenominator.textContent = 'dx';
     $derivaDiv.append($derivativeNumerator, $derivativeDenominator);
     $equationBlock.append($derivaDiv);
@@ -127,23 +138,20 @@ function changePracticeProblemView(type) {
     var $integralSignDiv = document.createElement('div');
     $integralSignDiv.className = 'integral-sign';
     var $integralSign = document.createElement('h2');
-    $integralSign.className = 'font grey-text integral';
+    $integralSign.className = 'grey-text integral';
     $integralSign.textContent = '∫';
     $integralSignDiv.append($integralSign);
     $equationBlock.append($integralSignDiv);
     var $integrateDivEnd = document.createElement('div');
     $integrateDivEnd.className = 'd-dx-integral';
     var $integralNumerator = document.createElement('h2');
-    $integralNumerator.className = 'font grey-text numerator';
-    $integralNumerator.textContent = 'd';
-    var $integalDenominator = document.createElement('h2');
-    $integalDenominator.className = 'font grey-text denominator';
-    $integalDenominator.textContent = 'dx';
-    $integrateDivEnd.append($integralNumerator, $integalDenominator);
+    $integralNumerator.className = 'grey-text numerator';
+    $integralNumerator.textContent = 'dx';
+    $integrateDivEnd.append($integralNumerator);
   }
   var $equationDiv = document.createElement('div');
   var $equationH2 = document.createElement('h2');
-  $equationH2.className = 'font grey-text';
+  $equationH2.className = 'grey-text';
   insertSuperscripts($equationH2, data.practice.problem);
   $equationDiv.appendChild($equationH2);
   $equationBlock.appendChild($equationDiv);
@@ -158,7 +166,6 @@ function insertSuperscripts(element, textContent) {
   var $supList = [];
   if (terms.length === 1) {
     element.append(textContent);
-
   } else {
     element.textContent = terms[0];
     for (var i = 1; i < terms.length; i++) {
@@ -320,3 +327,24 @@ function factorConstants() {
   c = integers[0] * integers[1] * integers[2];
   return [c, b, a];
 }
+
+var $practiceSettingsForm = document.querySelector('#practice-settings');
+
+$practiceSettingsForm.addEventListener('submit', function () {
+  event.preventDefault();
+  data.practice.settings = practiceTypes.filter(function (type) {
+    if (event.target.elements[type].checked) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  if (data.practice.settings.length > 0) {
+    practiceProblem();
+    var dataView = event.submitter.getAttribute('data-view');
+    viewChanger('hide-settings-error');
+    viewChanger(dataView);
+  } else {
+    viewChanger('show-settings-error');
+  }
+});

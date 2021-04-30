@@ -1,4 +1,12 @@
-.font {
+body {
+  background-color: #ededed;
+  font-family: 'Righteous', cursive;
+}
+
+button,
+input,
+select,
+textarea {
   font-family: 'Righteous', cursive;
 }
 
@@ -95,10 +103,6 @@ div.menu a {
 
 div.logo {
   width: min-content;
-}
-
-main {
-  background-color: #ededed;
 }
 
 div.home-page button {
@@ -268,6 +272,57 @@ textarea {
 
 textarea:focus {
   outline: none;
+}
+
+div.practice-settings-title {
+  text-align: center;
+}
+
+#practice-settings {
+  margin-top: 40px;
+}
+
+#practice-settings input {
+  width: 20px;
+}
+
+div.practice-settings-options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.practice-setting-option {
+  margin-bottom: 20px;
+}
+
+div.practice-setting-option div.equation-block {
+  justify-content: center;
+}
+
+div.derivative-settings-example {
+  text-align: center;
+  margin-right: 10px;
+}
+
+div.derivative-settings-example h3 {
+  margin: 0;
+}
+
+div.derivative-settings-example h3:last-child {
+  border-top: black 3px solid;
+}
+
+i.fa-arrow-right {
+  margin: 0 10px;
+}
+
+div.practice-setting-button {
+  text-align: center;
+}
+
+div.practice-settings-error {
+  text-align: center;
+  padding-bottom: 20px;
 }
 
 .hidden {
