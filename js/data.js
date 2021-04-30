@@ -7,6 +7,7 @@ var data = {
     result: null
   },
   practice: {
+    settings: [],
     type: '',
     problem: '',
     userAnswer: '',

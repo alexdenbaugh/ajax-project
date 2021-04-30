@@ -321,11 +321,19 @@ function factorConstants() {
   return [c, b, a];
 }
 
-var $practiceSettingsForm = document.querySelector('#practice-settings');
+// var $practiceSettingsForm = document.querySelector('#practice-settings');
 
-$practiceSettingsForm.addEventListener('submit', function () {
-  event.preventDefault();
-  practiceProblem();
-  var dataView = event.submitter.getAttribute('data-view');
-  viewChanger(dataView);
-});
+// $practiceSettingsForm.addEventListener('submit', function () {
+//   event.preventDefault();
+//   practiceTypes = [];
+//   for (var i = 0; i < event.target.elements.length; i++) {
+//     if (event.target.elements[i].checked) {
+//       practiceTypes.push(event.target.elements[i].getAttribute('name'));
+//     }
+//   }
+//   if (practiceTypes.length > 0) {
+//     practiceProblem();
+//     var dataView = event.submitter.getAttribute('data-view');
+//     viewChanger(dataView);
+//   }
+// });
