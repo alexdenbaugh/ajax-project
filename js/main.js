@@ -320,3 +320,9 @@ function factorConstants() {
   c = integers[0] * integers[1] * integers[2];
   return [c, b, a];
 }
+
+var $practiceSettingsForm = document.querySelector('#practice-settings');
+
+$practiceSettingsForm.addEventListener('submit', function () {
+  event.preventDefault();
+});
