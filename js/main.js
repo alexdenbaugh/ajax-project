@@ -146,11 +146,8 @@ function changePracticeProblemView(type) {
     $integrateDivEnd.className = 'd-dx-integral';
     var $integralNumerator = document.createElement('h2');
     $integralNumerator.className = 'font grey-text numerator';
-    $integralNumerator.textContent = 'd';
-    var $integalDenominator = document.createElement('h2');
-    $integalDenominator.className = 'font grey-text denominator';
-    $integalDenominator.textContent = 'dx';
-    $integrateDivEnd.append($integralNumerator, $integalDenominator);
+    $integralNumerator.textContent = 'dx';
+    $integrateDivEnd.append($integralNumerator);
   }
   var $equationDiv = document.createElement('div');
   var $equationH2 = document.createElement('h2');
