@@ -2,14 +2,18 @@
 
 var $pResult = document.querySelector('.result-text');
 
-function getNewtonData(type, problem) {
+function getNewtonData(type, problem, feature) {
   var xhr = new XMLHttpRequest();
   problem = encodeURIComponent(problem);
   xhr.open('GET', 'https://newton.now.sh/api/v2/' + type + '/' + problem);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
-    data.calculator.result = xhr.response.result;
-    updateResult(xhr.status);
+    if (feature === 'calculator') {
+      data.calculator.result = xhr.response.result;
+      updateResult(xhr.status);
+    } else if (feature === 'practice') {
+      data.practice.correctAnswer = xhr.response.result;
+    }
   });
   xhr.send();
 }
@@ -24,11 +28,14 @@ $formCalculator.addEventListener('submit', function () {
   data.calculator.problem = $formCalculator.elements.problem.value;
   data.calculator.result = null;
   formatCheck();
-  getNewtonData(data.calculator.type, data.calculator.problem);
+  getNewtonData(data.calculator.type, data.calculator.problem, 'calculator');
 });
 
 function updateResult(status) {
-  if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0 && isNaN(data.calculator.result))) {
+  if (data.calculator.type === 'log' && isNaN(data.calculator.result)) {
+    $pResult.textContent = responses[data.calculator.type];
+    $pResult.classList.add('red-text');
+  } else if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0)) {
     $pResult.textContent = responses[data.calculator.type];
     $pResult.classList.add('red-text');
   } else {
@@ -103,8 +110,7 @@ $practiceForm.addEventListener('submit', function () {
 function practiceProblem() {
   data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];
   data.practice.problem = createProblem(data.practice.type);
-  getNewtonData(data.practice.type, data.practice.problem);
-  data.practice.correctAnswer = data.calculator.problem;
+  getNewtonData(data.practice.type, data.practice.problem, 'practice');
   changePracticeProblemView(data.practice.type);
 }
 
