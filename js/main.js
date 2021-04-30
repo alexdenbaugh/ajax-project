@@ -325,6 +325,7 @@ var $practiceSettingsForm = document.querySelector('#practice-settings');
 
 $practiceSettingsForm.addEventListener('submit', function () {
   event.preventDefault();
+  practiceProblem();
   var dataView = event.submitter.getAttribute('data-view');
   viewChanger(dataView);
 });
