@@ -319,6 +319,11 @@ div.practice-setting-button {
   text-align: center;
 }
 
+div.practice-settings-error {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
 .hidden {
   display: none;
 }

@@ -61,12 +61,17 @@ function formatCheck() {
 
 var $views = document.querySelectorAll('.view');
 var $menu = document.querySelector('.hamburger-menu');
+var $practiceSettingsError = document.querySelector('.practice-settings-error');
 
 function viewChanger(dataView) {
   if (dataView === 'hide-menu') {
     $menu.classList.add('hidden');
   } else if (dataView === 'show-menu') {
     $menu.classList.remove('hidden');
+  } else if (dataView === 'show-settings-error') {
+    $practiceSettingsError.classList.remove('hidden');
+  } else if (dataView === 'hide-settings-error') {
+    $practiceSettingsError.classList.add('hidden');
   } else {
     for (var i = 0; i < $views.length; i++) {
       if ($views[i].getAttribute('data-view') === dataView) {
@@ -335,6 +340,9 @@ $practiceSettingsForm.addEventListener('submit', function () {
   if (data.practice.settings.length > 0) {
     practiceProblem();
     var dataView = event.submitter.getAttribute('data-view');
+    viewChanger('hide-settings-error');
     viewChanger(dataView);
+  } else {
+    viewChanger('show-settings-error');
   }
 });
