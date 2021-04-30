@@ -169,7 +169,6 @@ function insertSuperscripts(element, textContent) {
   var $supList = [];
   if (terms.length === 1) {
     element.append(textContent);
-
   } else {
     element.textContent = terms[0];
     for (var i = 1; i < terms.length; i++) {
