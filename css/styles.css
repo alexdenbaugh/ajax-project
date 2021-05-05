@@ -26,6 +26,10 @@ textarea {
   color: #d10000;
 }
 
+.green-text {
+  color: #007120;
+}
+
 .blue-text {
   color: #0067c6;
 }
@@ -323,6 +327,11 @@ div.practice-setting-button {
 div.practice-settings-error {
   text-align: center;
   padding-bottom: 20px;
+}
+
+#practice-response,
+button.correct-response {
+  text-align: center;
 }
 
 .hidden {

@@ -44,7 +44,7 @@
   </header>
   <main>
     <div class="container">
-      <div class="home-page row view" data-view="home">
+      <div class="home-page row view hidden" data-view="home">
         <button name="calculator" data-view="calculator" class="view-changer column-half"><i class="view-changer fas fa-calculator" data-view="calculator"></i></button>
         <div class="home-page-divider column-full"></div>
         <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain" data-view="progress"></i></button>
@@ -154,7 +154,7 @@
           <h3 class="red-text">Please select one of the above problem types to continue.</h3>
         </div>
       </div>
-      <div class="practice view hidden" data-view="practice">
+      <div class="practice view" data-view="practice">
         <div class="practice-title">
           <h1>Practice</h1>
           <p class="problem-type">Simplification</p>
@@ -179,6 +179,10 @@
             <button name="submit" class="white-text font-size button">Submit</button>
           </div>
         </form>
+        <div class="practice-response">
+          <h1 class="green-text" id="practice-response">Correct!</h1>
+          <button class="correct-response white-text font-size button">Next Problem</button>
+        </div>
       </div>
     </div>
   </main>
