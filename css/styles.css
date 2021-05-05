@@ -329,9 +329,13 @@ div.practice-settings-error {
   padding-bottom: 20px;
 }
 
-#practice-response,
-button.correct-response {
+#practice-response {
   text-align: center;
+}
+
+div.practice-response div {
+  display: flex;
+  justify-content: center;
 }
 
 .hidden {
