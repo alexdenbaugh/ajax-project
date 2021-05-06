@@ -144,9 +144,6 @@ function practiceProblem() {
   data.practice.problem = createProblem(data.practice.type);
   getNewtonData(data.practice.type, data.practice.problem, 'practice');
   getNewtonData(data.practice.type, data.practice.userAnswer, 'practice-answer');
-  // console.log('User:', data.practice.userAnswer)
-  // console.log('Correct Answer:', data.practice.correctAnswer)
-  // console.log('Original Problem:', data.practice.problem)
   changePracticeProblemView(data.practice.type);
 }
 
@@ -384,3 +381,19 @@ $practiceSettingsForm.addEventListener('submit', function () {
     viewChanger('show-settings-error');
   }
 });
+
+// function compareUserAndCorrect(user, answer) {
+//   user = user.split('');
+//   answer = answer.split('');
+//   user.sort();
+//   answer.sort();
+//   user = user.join('');
+//   answer = answer.join('');
+//   user = user.trimStart();
+//   answer = answer.trimStart();
+//   if (user === answer) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
