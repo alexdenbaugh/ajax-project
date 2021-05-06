@@ -15,6 +15,11 @@ function getNewtonData(type, problem, feature) {
       data.practice.correctAnswer = xhr.response.result;
     } else if (feature === 'practice-answer') {
       data.practice.userAnswer = xhr.response.result;
+      if (data.practice.userAnswer === data.practice.correctAnswer) {
+        correctOrIncorrect('correct');
+      } else {
+        correctOrIncorrect('incorrect');
+      }
     }
   });
   xhr.send();
@@ -107,7 +112,7 @@ var $practiceForm = document.querySelector('#form-practice');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
   data.practice.userAnswer = $practiceForm.elements.answer.value;
-  correctOrIncorrect('incorrect');
+  // correctOrIncorrect('incorrect');
   practiceProblem();
 });
 
@@ -139,6 +144,9 @@ function practiceProblem() {
   data.practice.problem = createProblem(data.practice.type);
   getNewtonData(data.practice.type, data.practice.problem, 'practice');
   getNewtonData(data.practice.type, data.practice.userAnswer, 'practice-answer');
+  // console.log('User:', data.practice.userAnswer)
+  // console.log('Correct Answer:', data.practice.correctAnswer)
+  // console.log('Original Problem:', data.practice.problem)
   changePracticeProblemView(data.practice.type);
 }
 
