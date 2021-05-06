@@ -13,6 +13,8 @@ function getNewtonData(type, problem, feature) {
       updateResult(xhr.status);
     } else if (feature === 'practice') {
       data.practice.correctAnswer = xhr.response.result;
+    } else if (feature === 'practice-answer') {
+      data.practice.userAnswer = xhr.response.result;
     }
   });
   xhr.send();
@@ -136,6 +138,7 @@ function practiceProblem() {
   data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];
   data.practice.problem = createProblem(data.practice.type);
   getNewtonData(data.practice.type, data.practice.problem, 'practice');
+  getNewtonData(data.practice.type, data.practice.userAnswer, 'practice-answer');
   changePracticeProblemView(data.practice.type);
 }
 
