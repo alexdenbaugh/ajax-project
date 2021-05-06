@@ -104,6 +104,7 @@ document.addEventListener('click', function () {
 var $practiceForm = document.querySelector('#form-practice');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
+  data.practice.userAnswer = $practiceForm.elements.answer.value;
   correctOrIncorrect('incorrect');
   practiceProblem();
 });
