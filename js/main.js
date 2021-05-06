@@ -104,13 +104,14 @@ document.addEventListener('click', function () {
 var $practiceForm = document.querySelector('#form-practice');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
-  correctOrIncorrect('hidden');
+  correctOrIncorrect('incorrect');
   practiceProblem();
 });
 
 var $practiceResponse = document.querySelector('.practice-response');
 var $practiceResponseH1 = document.querySelector('#practice-response');
 var $nextQuestion = document.querySelector('.next-question-div');
+var $practiceAnswerDiv = document.querySelector('#result-window-container');
 
 function correctOrIncorrect(result) {
   if (result === 'correct') {
@@ -118,11 +119,13 @@ function correctOrIncorrect(result) {
     $practiceResponseH1.textContent = 'Correct!';
     $practiceResponseH1.className = 'green-text';
     $nextQuestion.classList.remove('hidden');
+    $practiceAnswerDiv.className = 'result-window green-border';
   } else if (result === 'incorrect') {
     $practiceResponse.classList.remove('hidden');
     $practiceResponseH1.textContent = 'Incorrect';
     $practiceResponseH1.className = 'red-text';
     $nextQuestion.classList.add('hidden');
+    $practiceAnswerDiv.className = 'result-window red-border';
   } else {
     $practiceResponse.classList.add('hidden');
   }

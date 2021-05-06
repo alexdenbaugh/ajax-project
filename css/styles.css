@@ -338,6 +338,14 @@ div.practice-settings-error {
   justify-content: center;
 }
 
+.green-border {
+  border-color: #007120;
+}
+
+.red-border {
+  border-color: #d10000;
+}
+
 .hidden {
   display: none;
 }
