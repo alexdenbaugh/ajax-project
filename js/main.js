@@ -104,8 +104,29 @@ document.addEventListener('click', function () {
 var $practiceForm = document.querySelector('#form-practice');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
+  correctOrIncorrect('hidden');
   practiceProblem();
 });
+
+var $practiceResponse = document.querySelector('.practice-response');
+var $practiceResponseH1 = document.querySelector('#practice-response');
+var $nextQuestion = document.querySelector('.next-question-div');
+
+function correctOrIncorrect(result) {
+  if (result === 'correct') {
+    $practiceResponse.classList.remove('hidden');
+    $practiceResponseH1.textContent = 'Correct!';
+    $practiceResponseH1.className = 'green-text';
+    $nextQuestion.classList.remove('hidden');
+  } else if (result === 'incorrect') {
+    $practiceResponse.classList.remove('hidden');
+    $practiceResponseH1.textContent = 'Incorrect';
+    $practiceResponseH1.className = 'red-text';
+    $nextQuestion.classList.add('hidden');
+  } else {
+    $practiceResponse.classList.add('hidden');
+  }
+}
 
 function practiceProblem() {
   data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];

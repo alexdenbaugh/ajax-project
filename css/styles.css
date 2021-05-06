@@ -333,7 +333,7 @@ div.practice-settings-error {
   text-align: center;
 }
 
-div.practice-response div {
+.next-question-div {
   display: flex;
   justify-content: center;
 }
