@@ -13,13 +13,6 @@ function getNewtonData(type, problem, feature) {
       updateResult(xhr.status);
     } else if (feature === 'practice') {
       data.practice.correctAnswer = xhr.response.result;
-    } else if (feature === 'practice-answer') {
-      data.practice.userAnswer = xhr.response.result;
-      if (data.practice.userAnswer === data.practice.correctAnswer) {
-        correctOrIncorrect('correct');
-      } else {
-        correctOrIncorrect('incorrect');
-      }
     }
   });
   xhr.send();
@@ -112,13 +105,14 @@ var $practiceForm = document.querySelector('#form-practice');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
   data.practice.userAnswer = $practiceForm.elements.answer.value;
-  // correctOrIncorrect('incorrect');
-  practiceProblem();
+  correctOrIncorrect('incorrect');
+  // practiceProblem();
 });
 
 var $practiceResponse = document.querySelector('.practice-response');
 var $practiceResponseH1 = document.querySelector('#practice-response');
-var $nextQuestion = document.querySelector('.next-question-div');
+var $correctAnswer = document.querySelector('#correct-answer');
+// var $nextQuestion = document.querySelector('.next-question-div');
 var $practiceAnswerDiv = document.querySelector('#result-window-container');
 
 function correctOrIncorrect(result) {
@@ -126,14 +120,16 @@ function correctOrIncorrect(result) {
     $practiceResponse.classList.remove('hidden');
     $practiceResponseH1.textContent = 'Correct!';
     $practiceResponseH1.className = 'green-text';
-    $nextQuestion.classList.remove('hidden');
     $practiceAnswerDiv.className = 'result-window green-border';
+    $correctAnswer.classList.add('hidden');
   } else if (result === 'incorrect') {
     $practiceResponse.classList.remove('hidden');
     $practiceResponseH1.textContent = 'Incorrect';
     $practiceResponseH1.className = 'red-text';
-    $nextQuestion.classList.add('hidden');
     $practiceAnswerDiv.className = 'result-window red-border';
+    $correctAnswer.classList.remove('hidden');
+    $correctAnswer.textContent = 'Correct Answer: ';
+    insertSuperscripts($correctAnswer, data.practice.correctAnswer);
   } else {
     $practiceResponse.classList.add('hidden');
   }
@@ -143,7 +139,6 @@ function practiceProblem() {
   data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];
   data.practice.problem = createProblem(data.practice.type);
   getNewtonData(data.practice.type, data.practice.problem, 'practice');
-  getNewtonData(data.practice.type, data.practice.userAnswer, 'practice-answer');
   changePracticeProblemView(data.practice.type);
 }
 
@@ -233,7 +228,10 @@ function getPolynomial(maxPolySize, type) {
   }
   var sign;
   var integer;
-  var f = factorConstants();
+  var f;
+  if (type === 'factor') {
+    f = factorConstants();
+  }
   var polynomial = [];
   for (var i = 0; i < size; i++) {
     if (type === 'simplify') {

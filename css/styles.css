@@ -338,6 +338,10 @@ div.practice-settings-error {
   justify-content: center;
 }
 
+#correct-answer {
+  text-align: center;
+}
+
 .green-border {
   border-color: #007120;
 }
