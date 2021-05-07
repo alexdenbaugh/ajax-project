@@ -170,15 +170,22 @@
               <div>
                 <label for="answer-window" class="font-size">Answer:</label>
               </div>
-              <div class="result-window">
-                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font-size" placeholder="Please type answer using '()', '^' when nesessary, and without spaces."></textarea>
+              <div class="result-window" id="result-window-container">
+                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font-size" placeholder="Please type answer using '()', '^' when nesessary."></textarea>
               </div>
             </div>
           </div>
-          <div class="form-option button-container">
+          <div class="form-option button-container" id="practice-submit-button">
             <button name="submit" class="white-text font-size button">Submit</button>
           </div>
         </form>
+        <div class="practice-response hidden">
+          <h1 class="green-text" id="practice-response"></h1>
+          <p id="correct-answer" class="red-text"></p>
+          <div class="column-full next-question-div">
+            <button class="correct-response white-text font-size button" id="next-question-button">Next Problem</button>
+          </div>
+        </div>
       </div>
     </div>
   </main>

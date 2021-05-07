@@ -10,7 +10,7 @@ function getNewtonData(type, problem, feature) {
   xhr.addEventListener('load', function () {
     if (feature === 'calculator') {
       data.calculator.result = xhr.response.result;
-      updateResult(xhr.status);
+      updateResult(xhr.status, xhr.response.result);
     } else if (feature === 'practice') {
       data.practice.correctAnswer = xhr.response.result;
     }
@@ -31,11 +31,11 @@ $formCalculator.addEventListener('submit', function () {
   getNewtonData(data.calculator.type, data.calculator.problem, 'calculator');
 });
 
-function updateResult(status) {
+function updateResult(status, response) {
   if (data.calculator.type === 'log' && isNaN(data.calculator.result)) {
     $pResult.textContent = responses[data.calculator.type];
     $pResult.classList.add('red-text');
-  } else if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0)) {
+  } else if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0) || response.includes('error')) {
     $pResult.textContent = responses[data.calculator.type];
     $pResult.classList.add('red-text');
   } else {
@@ -92,19 +92,60 @@ function viewChanger(dataView) {
 }
 
 document.addEventListener('click', function () {
-  // eslint-disable-next-line no-empty
-  if (!event.target.classList.contains('view-changer')) {
-
-  } else {
+  if (event.target.classList.contains('view-changer')) {
     var dataView = event.target.getAttribute('data-view');
     viewChanger(dataView);
   }
 });
 
 var $practiceForm = document.querySelector('#form-practice');
+var $practiceSubmitButton = document.querySelector('#practice-submit-button');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
+  $practiceSubmitButton.classList.add('hidden');
+  data.practice.userAnswer = $practiceForm.elements.answer.value;
+  if (compareUserAndCorrect(data.practice.userAnswer, data.practice.correctAnswer)) {
+    correctOrIncorrect('correct');
+  } else {
+    correctOrIncorrect('incorrect');
+  }
+});
+
+var $practiceResponse = document.querySelector('.practice-response');
+var $practiceResponseH1 = document.querySelector('#practice-response');
+var $correctAnswer = document.querySelector('#correct-answer');
+var $practiceAnswerDiv = document.querySelector('#result-window-container');
+
+function correctOrIncorrect(result) {
+  if (result === 'correct') {
+    $practiceResponse.classList.remove('hidden');
+    $practiceResponseH1.textContent = 'Correct!';
+    $practiceResponseH1.className = 'green-text';
+    $practiceAnswerDiv.className = 'result-window green-border';
+    $correctAnswer.classList.add('hidden');
+  } else if (result === 'incorrect') {
+    $practiceResponse.classList.remove('hidden');
+    $practiceResponseH1.textContent = 'Incorrect';
+    $practiceResponseH1.className = 'red-text';
+    $practiceAnswerDiv.className = 'result-window red-border';
+    $correctAnswer.classList.remove('hidden');
+    $correctAnswer.textContent = 'Correct Answer: ';
+    insertSuperscripts($correctAnswer, data.practice.correctAnswer);
+  } else {
+    $practiceResponse.classList.add('hidden');
+    $practiceAnswerDiv.className = 'result-window';
+  }
+}
+
+var $nextQuestion = document.querySelector('#next-question-button');
+$nextQuestion.addEventListener('click', function (event) {
+  if (event.target !== $nextQuestion) {
+    return;
+  }
+  $practiceForm.elements.answer.value = '';
+  $practiceSubmitButton.classList.remove('hidden');
   practiceProblem();
+  correctOrIncorrect();
 });
 
 function practiceProblem() {
@@ -200,7 +241,10 @@ function getPolynomial(maxPolySize, type) {
   }
   var sign;
   var integer;
-  var f = factorConstants();
+  var f;
+  if (type === 'factor') {
+    f = factorConstants();
+  }
   var polynomial = [];
   for (var i = 0; i < size; i++) {
     if (type === 'simplify') {
@@ -348,3 +392,33 @@ $practiceSettingsForm.addEventListener('submit', function () {
     viewChanger('show-settings-error');
   }
 });
+
+function compareUserAndCorrect(user, answer) {
+  user = user.split('');
+  answer = answer.split('');
+  user = user.filter(char => {
+    if (char === '(' || char === ')') {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  answer = answer.filter(char => {
+    if (char === '(' || char === ')') {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  user.sort();
+  answer.sort();
+  user = user.join('');
+  answer = answer.join('');
+  user = user.trimStart();
+  answer = answer.trimStart();
+  if (user === answer) {
+    return true;
+  } else {
+    return false;
+  }
+}
