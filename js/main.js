@@ -105,14 +105,16 @@ var $practiceForm = document.querySelector('#form-practice');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
   data.practice.userAnswer = $practiceForm.elements.answer.value;
-  correctOrIncorrect('incorrect');
-  // practiceProblem();
+  if (compareUserAndCorrect(data.practice.userAnswer, data.practice.correctAnswer)) {
+    correctOrIncorrect('correct');
+  } else {
+    correctOrIncorrect('incorrect');
+  }
 });
 
 var $practiceResponse = document.querySelector('.practice-response');
 var $practiceResponseH1 = document.querySelector('#practice-response');
 var $correctAnswer = document.querySelector('#correct-answer');
-// var $nextQuestion = document.querySelector('.next-question-div');
 var $practiceAnswerDiv = document.querySelector('#result-window-container');
 
 function correctOrIncorrect(result) {
@@ -132,8 +134,18 @@ function correctOrIncorrect(result) {
     insertSuperscripts($correctAnswer, data.practice.correctAnswer);
   } else {
     $practiceResponse.classList.add('hidden');
+    $practiceAnswerDiv.className = 'result-window';
   }
 }
+
+var $nextQuestion = document.querySelector('#next-question-button');
+$nextQuestion.addEventListener('click', function (event) {
+  if (event.target !== $nextQuestion) {
+    return;
+  }
+  practiceProblem();
+  correctOrIncorrect();
+});
 
 function practiceProblem() {
   data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];
@@ -380,18 +392,32 @@ $practiceSettingsForm.addEventListener('submit', function () {
   }
 });
 
-// function compareUserAndCorrect(user, answer) {
-//   user = user.split('');
-//   answer = answer.split('');
-//   user.sort();
-//   answer.sort();
-//   user = user.join('');
-//   answer = answer.join('');
-//   user = user.trimStart();
-//   answer = answer.trimStart();
-//   if (user === answer) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
+function compareUserAndCorrect(user, answer) {
+  user = user.split('');
+  answer = answer.split('');
+  user = user.filter(char => {
+    if (char === '(' || char === ')') {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  answer = answer.filter(char => {
+    if (char === '(' || char === ')') {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  user.sort();
+  answer.sort();
+  user = user.join('');
+  answer = answer.join('');
+  user = user.trimStart();
+  answer = answer.trimStart();
+  if (user === answer) {
+    return true;
+  } else {
+    return false;
+  }
+}
