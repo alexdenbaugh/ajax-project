@@ -44,7 +44,7 @@
   </header>
   <main>
     <div class="container">
-      <div class="home-page row view hidden" data-view="home">
+      <div class="home-page row view" data-view="home">
         <button name="calculator" data-view="calculator" class="view-changer column-half"><i class="view-changer fas fa-calculator" data-view="calculator"></i></button>
         <div class="home-page-divider column-full"></div>
         <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain" data-view="progress"></i></button>
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="practice-settings view" data-view="practice-settings">
+      <div class="practice-settings view hidden" data-view="practice-settings">
         <div class="practice-settings-title">
           <h1>Practice</h1>
           <p class="problem-settings-prompt">What topics would you like to practice?</p>
@@ -171,17 +171,17 @@
                 <label for="answer-window" class="font-size">Answer:</label>
               </div>
               <div class="result-window" id="result-window-container">
-                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font-size" placeholder="Please type answer using '()', '^' when nesessary, and without spaces."></textarea>
+                <textarea required name="answer" id="answer-window" cols="30" rows="10" class="font-size" placeholder="Please type answer using '()', '^' when nesessary."></textarea>
               </div>
             </div>
           </div>
-          <div class="form-option button-container">
+          <div class="form-option button-container" id="practice-submit-button">
             <button name="submit" class="white-text font-size button">Submit</button>
           </div>
         </form>
         <div class="practice-response hidden">
-          <h1 class="green-text" id="practice-response">Correct!</h1>
-          <p id="correct-answer" class="red-text">Correct Answer: -3x<sup>3</sup>-4x<sup>2</sup>-10x</p>
+          <h1 class="green-text" id="practice-response"></h1>
+          <p id="correct-answer" class="red-text"></p>
           <div class="column-full next-question-div">
             <button class="correct-response white-text font-size button" id="next-question-button">Next Problem</button>
           </div>

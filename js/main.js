@@ -10,7 +10,7 @@ function getNewtonData(type, problem, feature) {
   xhr.addEventListener('load', function () {
     if (feature === 'calculator') {
       data.calculator.result = xhr.response.result;
-      updateResult(xhr.status);
+      updateResult(xhr.status, xhr.response.result);
     } else if (feature === 'practice') {
       data.practice.correctAnswer = xhr.response.result;
     }
@@ -31,11 +31,11 @@ $formCalculator.addEventListener('submit', function () {
   getNewtonData(data.calculator.type, data.calculator.problem, 'calculator');
 });
 
-function updateResult(status) {
+function updateResult(status, response) {
   if (data.calculator.type === 'log' && isNaN(data.calculator.result)) {
     $pResult.textContent = responses[data.calculator.type];
     $pResult.classList.add('red-text');
-  } else if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0)) {
+  } else if (status >= 400 || (!data.calculator.result && data.calculator.result !== 0) || response.includes('error')) {
     $pResult.textContent = responses[data.calculator.type];
     $pResult.classList.add('red-text');
   } else {
@@ -92,18 +92,17 @@ function viewChanger(dataView) {
 }
 
 document.addEventListener('click', function () {
-  // eslint-disable-next-line no-empty
-  if (!event.target.classList.contains('view-changer')) {
-
-  } else {
+  if (event.target.classList.contains('view-changer')) {
     var dataView = event.target.getAttribute('data-view');
     viewChanger(dataView);
   }
 });
 
 var $practiceForm = document.querySelector('#form-practice');
+var $practiceSubmitButton = document.querySelector('#practice-submit-button');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
+  $practiceSubmitButton.classList.add('hidden');
   data.practice.userAnswer = $practiceForm.elements.answer.value;
   if (compareUserAndCorrect(data.practice.userAnswer, data.practice.correctAnswer)) {
     correctOrIncorrect('correct');
@@ -144,6 +143,7 @@ $nextQuestion.addEventListener('click', function (event) {
     return;
   }
   $practiceForm.elements.answer.value = '';
+  $practiceSubmitButton.classList.remove('hidden');
   practiceProblem();
   correctOrIncorrect();
 });
