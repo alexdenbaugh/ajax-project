@@ -143,6 +143,7 @@ $nextQuestion.addEventListener('click', function (event) {
   if (event.target !== $nextQuestion) {
     return;
   }
+  $practiceForm.elements.answer.value = '';
   practiceProblem();
   correctOrIncorrect();
 });
