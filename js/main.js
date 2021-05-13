@@ -106,8 +106,10 @@ $practiceForm.addEventListener('submit', function () {
   data.practice.userAnswer = $practiceForm.elements.answer.value;
   if (compareUserAndCorrect(data.practice.userAnswer, data.practice.correctAnswer)) {
     correctOrIncorrect('correct');
+    data.practice.result = 'correct';
   } else {
     correctOrIncorrect('incorrect');
+    data.practice.result = 'incorrect';
   }
 });
 
@@ -142,6 +144,7 @@ $nextQuestion.addEventListener('click', function (event) {
   if (event.target !== $nextQuestion) {
     return;
   }
+  data.progress[data.practice.type].push(data.practice);
   $practiceForm.elements.answer.value = '';
   $practiceSubmitButton.classList.remove('hidden');
   practiceProblem();
