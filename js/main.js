@@ -144,7 +144,12 @@ $nextQuestion.addEventListener('click', function (event) {
   if (event.target !== $nextQuestion) {
     return;
   }
-  data.progress[data.practice.type].push(data.practice);
+  // console.log('practice.type', data.practice.type)
+  // var saveProgress = {settings, type, problem, userAnswer, correctAnswer, result} = data.practice;
+  // console.log('saveprogress', saveProgress)
+  // data.progress[saveProgress.type].push(saveProgress);
+  // console.log('data.progress[data.practice.type]', data.progress[data.practice.type])
+  // console.log('data.progress', data.progress);
   $practiceForm.elements.answer.value = '';
   $practiceSubmitButton.classList.remove('hidden');
   practiceProblem();
