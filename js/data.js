@@ -22,10 +22,10 @@ var data = {
   }
 };
 
-// let previousProgressJSON = localStorage.getItem('ajax-project-data-progress');
-// if (previousProgressJSON !== null) {
-//   data.progress = JSON.parse(previousProgressJSON);
-// }
+const previousProgressJSON = localStorage.getItem('ajax-project-data-progress');
+if (previousProgressJSON !== null) {
+  data.progress = JSON.parse(previousProgressJSON);
+}
 
 window.addEventListener('beforeunload', () => {
   const progressJSON = JSON.stringify(data.progress);
