@@ -94,9 +94,46 @@ function viewChanger(dataView) {
 document.addEventListener('click', function () {
   if (event.target.classList.contains('view-changer')) {
     var dataView = event.target.getAttribute('data-view');
+    if (dataView === 'progress') {
+      updateProgress();
+    }
     viewChanger(dataView);
   }
 });
+
+var $ProgressTile = document.querySelectorAll('.progress-tile');
+
+function updateProgress() {
+  var progressResults = {};
+  var tileInfo = {};
+  for (var k in data.progress) {
+    tileInfo = data.progress[k].reduce((tileInfo, problem) => {
+      if (problem.result === 'correct') {
+        tileInfo.correct++;
+      }
+      tileInfo.total++;
+      return tileInfo;
+    }, {
+      correct: 0,
+      total: 0
+    });
+    progressResults[k] = tileInfo;
+  }
+  for (var i = 0; i < $ProgressTile.length; i++) {
+    createProgressTile($ProgressTile[i], progressResults, practiceTypes[i]);
+
+  }
+}
+
+function createProgressTile(tile, results, type) {
+  var $h3 = document.createElement('h3');
+  var $fraction = document.createElement('p');
+  var $percentage = document.createElement('p');
+  $h3.textContent = practicePrompts[type].type;
+  $fraction.textContent = results[type].correct + '/' + results[type].total;
+  $percentage.textContent = `${results[type].correct / results[type].total * 100}%`;
+  tile.replaceChildren($h3, $fraction, $percentage);
+}
 
 var $practiceForm = document.querySelector('#form-practice');
 var $practiceSubmitButton = document.querySelector('#practice-submit-button');

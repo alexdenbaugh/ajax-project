@@ -63,11 +63,11 @@ var practicePrompts = {
     prompt: 'Factor the following equation:'
   },
   derive: {
-    type: 'Derivatives',
+    type: 'Derivation',
     prompt: 'What is the result of the following equation?'
   },
   integrate: {
-    type: 'Integrals',
+    type: 'Integration',
     prompt: 'What is the result of the following equation?'
   }
 };
