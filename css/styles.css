@@ -392,6 +392,10 @@ div.progress-grid > div {
   background-color: #f94144;
 }
 
+.no-attempt {
+  background-color: lightgrey;
+}
+
 .hidden {
   display: none;
 }

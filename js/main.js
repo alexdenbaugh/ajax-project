@@ -121,7 +121,6 @@ function updateProgress() {
   }
   for (var i = 0; i < $ProgressTile.length; i++) {
     createProgressTile($ProgressTile[i], progressResults, practiceTypes[i]);
-
   }
 }
 
@@ -130,19 +129,27 @@ function createProgressTile(tile, results, type) {
   var $fraction = document.createElement('p');
   var $percentage = document.createElement('p');
   $h3.textContent = practicePrompts[type].type;
-  $fraction.textContent = results[type].correct + '/' + results[type].total;
-  var percent = results[type].correct / results[type].total * 100;
-  $percentage.textContent = percent + '%';
-  if (percent >= 90) {
-    tile.className = 'progress-tile A';
-  } else if (percent >= 80) {
-    tile.className = 'progress-tile B';
-  } else if (percent >= 70) {
-    tile.className = 'progress-tile C';
-  } else if (percent >= 60) {
-    tile.className = 'progress-tile D';
+  if (results[type].total === 0) {
+    tile.className = 'progress-tile no-attempt';
+    $fraction.textContent = 'Not';
+    $percentage.textContent = 'Attempted';
   } else {
-    tile.className = 'progress-tile F';
+    var percent = results[type].correct / results[type].total * 100;
+    if (percent >= 90) {
+      tile.className = 'progress-tile A';
+    } else if (percent >= 80) {
+      tile.className = 'progress-tile B';
+    } else if (percent >= 70) {
+      tile.className = 'progress-tile C';
+    } else if (percent >= 60) {
+      tile.className = 'progress-tile D';
+    } else {
+      tile.className = 'progress-tile F';
+    }
+    $fraction.textContent = results[type].correct + '/' + results[type].total;
+    percent = Math.floor(percent);
+    percent = percent.toFixed(0);
+    $percentage.textContent = percent + '%';
   }
   tile.replaceChildren($h3, $fraction, $percentage);
 }
