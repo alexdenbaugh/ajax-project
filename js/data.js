@@ -22,6 +22,16 @@ var data = {
   }
 };
 
+const previousProgressJSON = localStorage.getItem('ajax-project-data-progress');
+if (previousProgressJSON !== null) {
+  data.progress = JSON.parse(previousProgressJSON);
+}
+
+window.addEventListener('beforeunload', () => {
+  const progressJSON = JSON.stringify(data.progress);
+  localStorage.setItem('ajax-project-data-progress', progressJSON);
+});
+
 var responses = {
   correct: 'Correct!',
   incorrect: 'Incorrect',
@@ -53,11 +63,11 @@ var practicePrompts = {
     prompt: 'Factor the following equation:'
   },
   derive: {
-    type: 'Derivatives',
+    type: 'Derivation',
     prompt: 'What is the result of the following equation?'
   },
   integrate: {
-    type: 'Integrals',
+    type: 'Integration',
     prompt: 'What is the result of the following equation?'
   }
 };

@@ -94,9 +94,65 @@ function viewChanger(dataView) {
 document.addEventListener('click', function () {
   if (event.target.classList.contains('view-changer')) {
     var dataView = event.target.getAttribute('data-view');
+    if (dataView === 'progress') {
+      updateProgress();
+    }
     viewChanger(dataView);
   }
 });
+
+var $ProgressTile = document.querySelectorAll('.progress-tile');
+
+function updateProgress() {
+  var progressResults = {};
+  var tileInfo = {};
+  for (var k in data.progress) {
+    tileInfo = data.progress[k].reduce((tileInfo, problem) => {
+      if (problem.result === 'correct') {
+        tileInfo.correct++;
+      }
+      tileInfo.total++;
+      return tileInfo;
+    }, {
+      correct: 0,
+      total: 0
+    });
+    progressResults[k] = tileInfo;
+  }
+  for (var i = 0; i < $ProgressTile.length; i++) {
+    createProgressTile($ProgressTile[i], progressResults, practiceTypes[i]);
+  }
+}
+
+function createProgressTile(tile, results, type) {
+  var $h3 = document.createElement('h3');
+  var $fraction = document.createElement('p');
+  var $percentage = document.createElement('p');
+  $h3.textContent = practicePrompts[type].type;
+  if (results[type].total === 0) {
+    tile.className = 'progress-tile no-attempt';
+    $fraction.textContent = 'Not';
+    $percentage.textContent = 'Attempted';
+  } else {
+    var percent = results[type].correct / results[type].total * 100;
+    if (percent >= 90) {
+      tile.className = 'progress-tile A';
+    } else if (percent >= 80) {
+      tile.className = 'progress-tile B';
+    } else if (percent >= 70) {
+      tile.className = 'progress-tile C';
+    } else if (percent >= 60) {
+      tile.className = 'progress-tile D';
+    } else {
+      tile.className = 'progress-tile F';
+    }
+    $fraction.textContent = results[type].correct + '/' + results[type].total;
+    percent = Math.floor(percent);
+    percent = percent.toFixed(0);
+    $percentage.textContent = percent + '%';
+  }
+  tile.replaceChildren($h3, $fraction, $percentage);
+}
 
 var $practiceForm = document.querySelector('#form-practice');
 var $practiceSubmitButton = document.querySelector('#practice-submit-button');
@@ -106,8 +162,10 @@ $practiceForm.addEventListener('submit', function () {
   data.practice.userAnswer = $practiceForm.elements.answer.value;
   if (compareUserAndCorrect(data.practice.userAnswer, data.practice.correctAnswer)) {
     correctOrIncorrect('correct');
+    data.practice.result = 'correct';
   } else {
     correctOrIncorrect('incorrect');
+    data.practice.result = 'incorrect';
   }
 });
 
@@ -142,6 +200,16 @@ $nextQuestion.addEventListener('click', function (event) {
   if (event.target !== $nextQuestion) {
     return;
   }
+  data.progress[data.practice.type].push(data.practice);
+  const saveSettings = data.practice.settings;
+  data.practice = {
+    settings: saveSettings,
+    type: '',
+    problem: '',
+    userAnswer: '',
+    correctAnswer: '',
+    result: null
+  };
   $practiceForm.elements.answer.value = '';
   $practiceSubmitButton.classList.remove('hidden');
   practiceProblem();
