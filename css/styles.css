@@ -1,3 +1,12 @@
+/*
+  =================
+  Table of Contents
+  =================
+
+  1.
+
+*/
+
 body {
   background-color: #ededed;
   font-family: 'Righteous', cursive;
@@ -118,6 +127,41 @@ div.logo > a {
   line-height: 1rem;
 }
 
+button:hover,
+.progress-tile {
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.25),
+    0 2px 2px rgba(0, 0, 0, 0.2),
+    0 4px 4px rgba(0, 0, 0, 0.15),
+    0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.25),
+    0 2px 2px rgba(0, 0, 0, 0.2),
+    0 4px 4px rgba(0, 0, 0, 0.15),
+    0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.05);
+}
+
+.home-page-title {
+  text-align: center;
+
+  /* background-color: #0067c6; */
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.home-page-text {
+  text-align: center;
+  max-width: 19em;
+}
+
 div.home-page button {
   width: 225px;
   background-color: white;
@@ -131,7 +175,7 @@ div.home-page button {
   transition: color 0.3s, background-color 0.3s;
 }
 
-div.home-page i {
+div.home-page i.view-changer {
   color: inherit;
   font-size: 125px;
 }
@@ -147,11 +191,6 @@ div.home-page button:hover,
 button.menu:hover {
   background-color: #0067c6;
   color: white;
-}
-
-h1 {
-  margin: 0;
-  padding: 10px;
 }
 
 label {
