@@ -106,7 +106,16 @@ div.menu a {
 }
 
 div.logo {
-  width: min-content;
+  width: fit-content;
+}
+
+div.logo > a {
+  position: relative;
+}
+
+.wizard-logo {
+  position: absolute;
+  line-height: 1rem;
 }
 
 div.home-page button {
