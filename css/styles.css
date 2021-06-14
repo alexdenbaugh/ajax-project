@@ -1,17 +1,51 @@
+/*
+  =================
+  Table of Contents
+  =================
+
+  1. Global Styles
+  2. Fonts and Colors
+  3. Components
+    3.1 Nav-bar
+    3.2 Forms
+    3.3 Buttons
+  4. Pages
+    4.1 Home
+    4.2 Calculator
+    4.3 Progress
+    4.4 Practice Settings
+    4.5 Practice
+  5. Hidden
+*/
+
+/* ================
+   1. Global Styles
+   ================ */
+
 body {
   background-color: #ededed;
   font-family: 'Righteous', cursive;
+  color: rgb(22, 20, 20);
 }
 
-button,
-input,
-select,
-textarea {
-  font-family: 'Righteous', cursive;
+header {
+  background-color: #0067c6;
+  display: flex;
+  height: 50px;
+  width: 100%;
 }
+
+h1 {
+  margin: 0;
+  padding: 0.625rem;
+}
+
+/* ===================
+   2. Fonts and Colors
+   =================== */
 
 .font-size {
-  font-size: 15px;
+  font-size: 1rem;
 }
 
 .white-text {
@@ -34,11 +68,27 @@ textarea {
   color: #0067c6;
 }
 
-header {
-  background-color: #0067c6;
-  display: flex;
-  height: 50px;
-  width: 100%;
+.green-border {
+  border-color: #007120;
+}
+
+.red-border {
+  border-color: #d10000;
+}
+
+/* =============
+   3. Components
+   ============= */
+
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 button,
@@ -49,9 +99,30 @@ i.view-changer {
   cursor: pointer;
 }
 
+header a:hover,
+header i:hover {
+  color: #b2cce4;
+  transition: color 0.3s;
+}
+
+button:hover {
+  box-shadow:
+    1px 2px rgba(0, 0, 0, 0.07),
+    0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07),
+    0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07),
+    0 32px 64px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.3s;
+}
+
+/* ===========
+   3.1 Nav-bar
+   =========== */
+
 div.menu-icon i,
 div.nav-bar-menu-icon i {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 
 .hamburger-menu {
@@ -60,11 +131,11 @@ div.nav-bar-menu-icon i {
   position: absolute;
   right: 0;
   top: 0;
-  width: 150px;
+  width: 9.375rem;
   aspect-ratio: 1 / 1;
   background-color: white;
-  border-radius: 5px;
-  border: #0067c6 2px solid;
+  border-radius: 0.3rem;
+  border: #0067c6 0.125rem solid;
 }
 
 .hamburger-icon {
@@ -83,14 +154,14 @@ div.menu-icon {
   text-align: right;
   width: 100%;
   height: 45px;
-  padding: 0 22px;
+  padding: 0 1.375rem;
 }
 
 button.menu {
   width: 100%;
   height: 100%;
   text-align: center;
-  border-top: #0067c6 2px solid;
+  border-top: #0067c6 0.125rem solid;
   border-bottom: none;
   border-left: none;
   border-right: none;
@@ -100,61 +171,33 @@ button.menu {
   outline: none;
 }
 
-header a,
-div.menu a {
-  text-decoration: none;
-}
-
 div.logo {
-  width: min-content;
+  width: fit-content;
 }
 
-div.home-page button {
-  width: 225px;
-  background-color: white;
-  aspect-ratio: 1 / 1;
-  border: #0067c6 medium solid;
-  border-radius: 10px;
-  margin: 20px;
-  outline: none;
-  cursor: pointer;
-  color: #0067c6;
-  transition: color 0.3s, background-color 0.3s;
+div.logo > a {
+  position: relative;
 }
 
-div.home-page i {
-  color: inherit;
-  font-size: 125px;
+.wizard-logo {
+  position: absolute;
+  line-height: 1rem;
 }
 
-div.home-page-divider {
-  max-width: 300px;
-  height: 10px;
-  background-color: #404040;
-  border-radius: 10px;
-}
-
-div.home-page button:hover,
-button.menu:hover {
-  background-color: #0067c6;
-  color: white;
-}
-
-h1 {
-  margin: 0;
-  padding: 10px;
-}
+/* =========
+   3.2 Forms
+   ========= */
 
 label {
-  margin-left: 5px;
+  margin-left: 0.313rem;
 }
 
 select,
 input,
 .result-window {
-  border: #0067c6 2px solid;
-  border-radius: 5px;
-  margin-top: 2px;
+  border: #0067c6 0.125rem solid;
+  border-radius: 0.313rem;
+  margin-top: 0.125rem;
 }
 
 input:focus,
@@ -167,104 +210,7 @@ input::placeholder {
 }
 
 div.form-option {
-  margin: 10px 0;
-}
-
-.button {
-  background-color: #0067c6;
-  border: #0067c6 2px solid;
-  border-radius: 10px;
-  padding: 5px 25px;
-  margin: 15px 0;
-}
-
-div.button-container {
-  text-align: right;
-}
-
-div.result-window {
-  width: 100%;
-  height: 100px;
-  background-color: white;
-}
-
-div.result > div {
-  max-width: 700px;
-}
-
-p.result-text {
-  margin: 2px;
-  padding: 0 2px;
-}
-
-div.practice-title,
-div.practice-problem-statement {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-div.practice p {
-  margin: 0;
-}
-
-div.problem {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 20px auto;
-  width: fit-content;
-  justify-content: center;
-  min-height: 83px;
-}
-
-div.problem h2 {
-  padding: 0;
-  margin: 0 auto;
-}
-
-div.integral-sign {
-  left: -60px;
-  align-self: center;
-}
-
-h2.integral {
-  font-size: 60px;
-}
-
-div.plus,
-div.parenthesis {
-  margin: 0 10px;
-}
-
-div.plus {
-  display: flex;
-  align-items: center;
-  height: 64px;
-}
-
-div.parenthesis h2 {
-  font-size: 48px;
-}
-
-.no-fraction {
-  display: flex;
-  align-self: center;
-}
-
-.d-dx-integral {
-  margin-left: 20px;
-}
-
-.d-dx-derivative {
-  margin-right: 20px;
-}
-
-.denominator {
-  border-top: #2f2f2f 4px solid;
-}
-
-div.equation-block {
-  display: flex;
-  align-items: center;
+  margin: 0.625rem 0;
 }
 
 textarea {
@@ -278,77 +224,94 @@ textarea:focus {
   outline: none;
 }
 
-div.practice-settings-title {
+/* ===========
+   3.3 Buttons
+   =========== */
+
+.button {
+  background-color: #0067c6;
+  border: #0067c6 0.125rem solid;
+  border-radius: 0.625rem;
+  padding: 0.313rem 1.563rem;
+  margin: 0.938rem 0;
+}
+
+div.button-container {
+  text-align: right;
+}
+
+/* ========
+   4. Pages
+   ======== */
+
+/* ========
+   4.1 Home
+   ======== */
+
+.home-page-title {
   text-align: center;
+  border-radius: 0.313rem;
+  width: 100%;
 }
 
-#practice-settings {
-  margin-top: 40px;
-}
-
-#practice-settings input {
-  width: 20px;
-}
-
-div.practice-settings-options {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-div.practice-setting-option {
-  margin-bottom: 20px;
-}
-
-div.practice-setting-option div.equation-block {
-  justify-content: center;
-}
-
-div.derivative-settings-example {
+.home-page-text {
   text-align: center;
-  margin-right: 10px;
+  max-width: 19rem;
 }
 
-div.derivative-settings-example h3 {
-  margin: 0;
+div.home-page button {
+  width: 14rem;
+  background-color: white;
+  aspect-ratio: 1 / 1;
+  border: #0067c6 medium solid;
+  border-radius: 0.625rem;
+  margin: 1.25rem;
+  outline: none;
+  cursor: pointer;
+  color: #0067c6;
+  transition: color 0.3s, background-color 0.3s;
 }
 
-div.derivative-settings-example h3:last-child {
-  border-top: black 3px solid;
+div.home-page i.view-changer {
+  color: inherit;
+  font-size: 125px;
 }
 
-i.fa-arrow-right {
-  margin: 0 10px;
+div.home-page-divider {
+  max-width: 300px;
+  height: 0.625rem;
+  background-color: #404040;
+  border-radius: 0.625rem;
 }
 
-div.practice-setting-button {
-  text-align: center;
+div.home-page button:hover,
+button.menu:hover {
+  background-color: #0067c6;
+  color: white;
 }
 
-div.practice-settings-error {
-  text-align: center;
-  padding-bottom: 20px;
+/* ==============
+   4.2 Calculator
+   ============== */
+
+div.result-window {
+  width: 100%;
+  height: 100px;
+  background-color: white;
 }
 
-#practice-response {
-  text-align: center;
+div.result > div {
+  max-width: 700px;
 }
 
-.next-question-div {
-  display: flex;
-  justify-content: center;
+p.result-text {
+  margin: 0.125rem;
+  padding: 0 0.125rem;
 }
 
-#correct-answer {
-  text-align: center;
-}
-
-.green-border {
-  border-color: #007120;
-}
-
-.red-border {
-  border-color: #d10000;
-}
+/* ============
+   4.3 Progress
+   ============ */
 
 .progress-view {
   text-align: center;
@@ -360,16 +323,22 @@ div.practice-settings-error {
 }
 
 .progress-tile {
-  padding: 10px;
+  padding: 0.625rem;
   width: 140px;
-  border-radius: 10px;
-  border: 2px black solid;
+  border-radius: 0.625rem;
+  border: 0.125rem black solid;
+  box-shadow:
+    0 0.063rem 0.063rem rgba(0, 0, 0, 0.25),
+    0 0.125rem 0.125rem rgba(0, 0, 0, 0.2),
+    0 0.25rem 0.25rem rgba(0, 0, 0, 0.15),
+    0 0.25rem 0.25rem rgba(0, 0, 0, 0.1),
+    0 1rem 1rem rgba(0, 0, 0, 0.05);
 }
 
 div.progress-grid > div {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 1.25rem 0;
 }
 
 .A {
@@ -395,6 +364,150 @@ div.progress-grid > div {
 .no-attempt {
   background-color: lightgrey;
 }
+
+/* =====================
+   4.4 Practice Settings
+   ===================== */
+
+div.practice-settings-title {
+  text-align: center;
+}
+
+#practice-settings {
+  margin-top: 2.5rem;
+}
+
+#practice-settings input {
+  width: 1.25rem;
+}
+
+div.practice-settings-options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.practice-setting-option {
+  margin-bottom: 1.25rem;
+  justify-content: center;
+}
+
+div.derivative-settings-example {
+  text-align: center;
+  margin-right: 0.625rem;
+}
+
+div.derivative-settings-example h3 {
+  margin: 0;
+}
+
+div.derivative-settings-example h3:last-child {
+  border-top: black 0.188rem solid;
+}
+
+i.fa-arrow-right {
+  margin: 0 0.625rem;
+}
+
+div.practice-setting-button {
+  text-align: center;
+}
+
+div.practice-settings-error {
+  text-align: center;
+  padding-bottom: 1.25rem;
+}
+
+/* ============
+   4.5 Practice
+   ============ */
+
+div.practice-title,
+div.practice-problem-statement {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+div.practice p {
+  margin: 0;
+}
+
+div.problem {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1.25rem auto;
+  width: fit-content;
+  justify-content: center;
+  min-height: 83px;
+}
+
+div.problem h2 {
+  padding: 0;
+  margin: 0 auto;
+}
+
+div.integral-sign {
+  left: -3.75rem;
+  align-self: center;
+}
+
+h2.integral {
+  font-size: 3.75rem;
+}
+
+div.plus,
+div.parenthesis {
+  margin: 0 0.625rem;
+}
+
+div.plus {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+}
+
+div.parenthesis h2 {
+  font-size: 3rem;
+}
+
+.no-fraction {
+  display: flex;
+  align-self: center;
+}
+
+.d-dx-integral {
+  margin-left: 1.25rem;
+}
+
+.d-dx-derivative {
+  margin-right: 1.25rem;
+}
+
+.denominator {
+  border-top: #2f2f2f 0.25rem solid;
+}
+
+div.equation-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#practice-response {
+  text-align: center;
+}
+
+.next-question-div {
+  display: flex;
+  justify-content: center;
+}
+
+#correct-answer {
+  text-align: center;
+}
+
+/* =========
+   5. Hidden
+   ========= */
 
 .hidden {
   display: none;
