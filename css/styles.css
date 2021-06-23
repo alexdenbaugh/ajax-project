@@ -272,6 +272,10 @@ div.home-page button {
   transition: color 0.3s, background-color 0.3s;
 }
 
+button > h1 {
+  padding-top: 0;
+}
+
 div.home-page i.view-changer {
   color: inherit;
   font-size: 125px;
