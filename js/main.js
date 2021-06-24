@@ -3,6 +3,9 @@
 var $pResult = document.querySelector('.result-text');
 
 function getNewtonData(type, problem, feature) {
+  if (type === 'expand') {
+    type = 'simplify';
+  }
   var xhr = new XMLHttpRequest();
   problem = encodeURIComponent(problem);
   xhr.open('GET', 'https://newton.now.sh/api/v2/' + type + '/' + problem);
@@ -12,7 +15,11 @@ function getNewtonData(type, problem, feature) {
       data.calculator.result = xhr.response.result;
       updateResult(xhr.status, xhr.response.result);
     } else if (feature === 'practice') {
-      data.practice.correctAnswer = xhr.response.result;
+      if (type === 'integrate') {
+        data.practice.correctAnswer = xhr.response.result + ' + C';
+      } else {
+        data.practice.correctAnswer = xhr.response.result;
+      }
     }
   });
   xhr.send();
@@ -286,7 +293,7 @@ function insertSuperscripts(element, textContent) {
 }
 
 function createProblem(type) {
-  if (type === 'simplify') {
+  if (type === 'expand') {
     return '(' + getPolynomial(2, type) + ')(' + getPolynomial(3, type) + ')';
   } else if (type === 'factor') {
     return getPolynomial(3, type);
@@ -302,7 +309,7 @@ function getPolynomial(maxPolySize, type) {
     return null;
   }
   var size;
-  if (type === 'simplify') {
+  if (type === 'expand') {
     size = randomInteger(1, maxPolySize);
   } else if (type === 'factor') {
     size = maxPolySize;
@@ -315,7 +322,7 @@ function getPolynomial(maxPolySize, type) {
   }
   var polynomial = [];
   for (var i = 0; i < size; i++) {
-    if (type === 'simplify') {
+    if (type === 'expand') {
       integer = randomInteger(0, 10);
     } else if (type === 'factor') {
       integer = f[i];
@@ -342,7 +349,7 @@ function getPolynomial(maxPolySize, type) {
       }
     }
   }
-  if (type === 'simplify') {
+  if (type === 'expand') {
     if (polynomial.length <= 1) {
       integer = randomInteger(1, 10);
       sign = randomInteger(0, 1);
@@ -386,16 +393,16 @@ function getDerivativeProblem() {
   var sign = randomInteger(0, 1);
   var trigType = trigProblemTypes[randomInteger(0, trigProblemTypes.length - 1)];
   if (category === 'poly') {
-    return getPolynomial(3, 'simplify');
+    return getPolynomial(3, 'expand');
   } else if (category === 'trig') {
-    problem = randomInteger(2, 9) + trigType + '(' + getPolynomial(2, 'simplify') + ')';
+    problem = randomInteger(2, 9) + trigType + '(' + getPolynomial(2, 'expand') + ')';
     if (sign === 0) {
       return '-' + problem;
     } else {
       return problem;
     }
   } else if (category === 'trigExponent') {
-    return trigType + '(' + getPolynomial(2, 'simplify') + ')' + '^(2)';
+    return trigType + '(' + getPolynomial(2, 'expand') + ')' + '^(2)';
   }
 }
 
@@ -405,16 +412,16 @@ function getIntegralProblem() {
   var sign = randomInteger(0, 1);
   var trigType = trigProblemTypes[randomInteger(0, trigProblemTypes.length - 1)];
   if (category === 'poly') {
-    return getPolynomial(3, 'simplify');
+    return getPolynomial(3, 'expand');
   } else if (category === 'trig') {
-    problem = randomInteger(2, 9) + trigType + '(' + getPolynomial(2, 'simplify') + ')';
+    problem = randomInteger(2, 9) + trigType + '(' + getPolynomial(2, 'expand') + ')';
     if (sign === 0) {
       return '-' + problem;
     } else {
       return problem;
     }
   } else if (category === 'exponent') {
-    return '(' + getPolynomial(3, 'simplify') + ')^(' + 2 + ')';
+    return '(' + getPolynomial(3, 'expand') + ')^(' + 2 + ')';
   }
 }
 
@@ -462,8 +469,8 @@ $practiceSettingsForm.addEventListener('submit', function () {
 });
 
 function compareUserAndCorrect(user, answer) {
-  user = user.split('');
-  answer = answer.split('');
+  user = user.toLowerCase().split('');
+  answer = answer.toLowerCase().split('');
   user = user.filter(char => {
     if (char === '(' || char === ')') {
       return false;
