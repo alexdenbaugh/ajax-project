@@ -1,6 +1,7 @@
 /* global data, responses, typeCheck, practiceTypes, practicePrompts, derivativeTypes, trigProblemTypes, integralTypes, trigProblemTypes */
 
 var $pResult = document.querySelector('.result-text');
+var $practiceNetworkError = document.querySelector('#practice-network-error');
 
 function getNewtonData(type, problem, feature) {
   if (type === 'expand') {
@@ -15,15 +16,32 @@ function getNewtonData(type, problem, feature) {
       data.calculator.result = xhr.response.result;
       updateResult(xhr.status, xhr.response.result);
     } else if (feature === 'practice') {
-      if (type === 'integrate') {
-        data.practice.correctAnswer = xhr.response.result + ' + C';
+      $practiceNetworkError.className = 'hidden';
+      $problem.classList.remove('hidden');
+      if (xhr.status === 200) {
+        changePracticeProblemView(data.practice.type);
+        $practiceForm.classList.remove('hidden');
+        if (type === 'integrate') {
+          data.practice.correctAnswer = xhr.response.result + ' + C';
+        } else {
+          data.practice.correctAnswer = xhr.response.result;
+        }
       } else {
-        data.practice.correctAnswer = xhr.response.result;
+        data.practice.correctAnswer = null;
       }
     }
   });
+  xhr.onerror = function () {
+    $practiceNetworkError.className = '';
+    $problem.classList.add('hidden');
+  };
   xhr.send();
 }
+
+var $practiceErrorButton = document.querySelector('#try-again-button');
+$practiceErrorButton.addEventListener('click', function () {
+  getNewtonData(data.practice.type, data.practice.problem, 'practice');
+});
 
 var $formCalculator = document.querySelector('#form-calculator');
 
@@ -165,6 +183,9 @@ var $practiceForm = document.querySelector('#form-practice');
 var $practiceSubmitButton = document.querySelector('#practice-submit-button');
 $practiceForm.addEventListener('submit', function () {
   event.preventDefault();
+  if (data.practice.correctAnswer === null) {
+    return;
+  }
   $practiceSubmitButton.classList.add('hidden');
   data.practice.userAnswer = $practiceForm.elements.answer.value;
   if (compareUserAndCorrect(data.practice.userAnswer, data.practice.correctAnswer)) {
@@ -214,25 +235,28 @@ $nextQuestion.addEventListener('click', function (event) {
     type: '',
     problem: '',
     userAnswer: '',
-    correctAnswer: '',
+    correctAnswer: null,
     result: null
   };
   $practiceForm.elements.answer.value = '';
+  $practiceForm.classList.add('hidden');
   $practiceSubmitButton.classList.remove('hidden');
   practiceProblem();
   correctOrIncorrect();
 });
 
-function practiceProblem() {
-  data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];
-  data.practice.problem = createProblem(data.practice.type);
-  getNewtonData(data.practice.type, data.practice.problem, 'practice');
-  changePracticeProblemView(data.practice.type);
-}
-
 var $problemType = document.querySelector('.problem-type');
 var $problemPrompt = document.querySelector('.problem-prompt');
 var $problem = document.querySelector('.problem');
+
+function practiceProblem() {
+  data.practice.type = data.practice.settings[randomInteger(0, data.practice.settings.length - 1)];
+  data.practice.problem = createProblem(data.practice.type);
+  $problemType.textContent = '';
+  $problemPrompt.textContent = '';
+  $problem.replaceChildren('Loading Problem...');
+  getNewtonData(data.practice.type, data.practice.problem, 'practice');
+}
 
 function changePracticeProblemView(type) {
   $problemType.textContent = practicePrompts[type].type;
