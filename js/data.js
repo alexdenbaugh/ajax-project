@@ -15,7 +15,7 @@ var data = {
     result: null
   },
   progress: {
-    simplify: [],
+    expand: [],
     factor: [],
     derive: [],
     integrate: []
@@ -35,7 +35,7 @@ window.addEventListener('beforeunload', () => {
 var responses = {
   correct: 'Correct!',
   incorrect: 'Incorrect',
-  simplify: 'Please use "^" for exponents and use parenthesis when dividing polynomials. Pair parenthesis',
+  expand: 'Please use "^" for exponents and use parenthesis when dividing polynomials. Pair parenthesis',
   factor: 'Please use "^" for exponents and use parenthesis when dividing polynomials. Pair parenthesis',
   derive: 'Please use "^" for exponents and use parenthesis when dividing polynomials. Pair parenthesis',
   integrate: 'Please use "^" for exponents and use parenthesis when dividing polynomials. Pair parenthesis',
@@ -47,16 +47,16 @@ var typeCheck = ['arcsin', 'arccos', 'arctan', 'sin', 'cos', 'tan', 'log'];
 
 var trigProblemTypes = ['sin', 'cos'];
 
-var practiceTypes = ['simplify', 'factor', 'derive', 'integrate'];
+var practiceTypes = ['expand', 'factor', 'derive', 'integrate'];
 
 var derivativeTypes = ['poly', 'trig', 'trigExponent'];
 
 var integralTypes = ['poly', 'trig', 'exponent'];
 
 var practicePrompts = {
-  simplify: {
-    type: 'Simplification',
-    prompt: 'Simplify the following equation:'
+  expand: {
+    type: 'Expanding',
+    prompt: 'Expand the following equation:'
   },
   factor: {
     type: 'Factoring',

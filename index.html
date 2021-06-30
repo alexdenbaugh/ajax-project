@@ -50,14 +50,17 @@
         </div>
         <div class="row">
           <h3 class="home-page-text">Math Wizard is an app that can calculate complex math problems, and help <i>YOU</i> solve complex math problems!</h3>
-          <h4 class="home-page-text">Get Started by clicking Calculator mode ( <i class="blue-text fas fa-calculator"></i> ), or Practice mode ( <i class="blue-text fas fa-brain"></i> )</h4>
+          <h4 class="home-page-text">Get started by clicking the calculator button or the progress button below.</h4>
         </div>
         <div class="row">
-          <button name="calculator" data-view="calculator" class="view-changer column-half"><i
-              class="view-changer fas fa-calculator" data-view="calculator"></i></button>
+          <button name="calculator" data-view="calculator" class="view-changer column-half">
+            <h1>Calculator</h1>
+            <i class="view-changer fas fa-calculator" data-view="calculator"></i>
+          </button>
           <div class="home-page-divider column-full"></div>
-          <button name="practice" data-view="progress" class="view-changer column-half"><i class="view-changer fas fa-brain"
-              data-view="progress"></i>
+          <button name="practice" data-view="progress" class="view-changer column-half">
+            <h1>Progress</h1>
+            <i class="view-changer fas fa-brain" data-view="progress"></i>
           </button>
         </div>
       </div>
@@ -73,7 +76,7 @@
               </div>
               <select required name="type" id="calculator-type" class="grey-text font-size">
                 <option value="">Select</option>
-                <option value="simplify">Simplify</option>
+                <option value="expand">Expand</option>
                 <option value="factor">Factor</option>
                 <option value="derive">Derive</option>
                 <option value="integrate">Integrate</option>
@@ -109,7 +112,7 @@
         </div>
         <div class="progress-grid">
           <div class="column-one-fourth">
-            <div class="progress-tile" data-progress="simplification"></div>
+            <div class="progress-tile" data-progress="expanding"></div>
           </div>
           <div class="column-one-fourth">
             <div class="progress-tile" data-progress="factoring"></div>
@@ -132,8 +135,8 @@
           <div class="practice-settings-options">
             <div class="practice-setting-option column-one-fourth">
               <div>
-                <input checked type="checkbox" name="simplify" id="practice-settings-simplify">
-                <label for="practice-settings-simplify">Simplification</label>
+                <input checked type="checkbox" name="expand" id="practice-settings-expand">
+                <label for="practice-settings-expand">Expanding</label>
               </div>
               <div class="equation-block">
                 <h3>(x+2)(x+1) <i class="fas fa-arrow-right"></i> x<sup>2</sup>+3x+2</h3>
@@ -173,7 +176,7 @@
                   <h1>∫</h1>
                 </div>
                 <div>
-                  <h3>sin(x) dx <i class="fas fa-arrow-right"></i> -cos(x)</h3>
+                  <h3>sin(x) dx <i class="fas fa-arrow-right"></i> -cos(x) + C</h3>
                 </div>
               </div>
             </div>
@@ -189,14 +192,18 @@
       <div class="practice view hidden" data-view="practice">
         <div class="practice-title">
           <h1>Practice</h1>
-          <p class="problem-type">Simplification</p>
+          <p class="problem-type">Expanding</p>
         </div>
         <div class="practice-problem-statement">
-          <p class="problem-prompt">Simplify the following equation:</p>
+          <p class="problem-prompt">Expand the following equation:</p>
           <div class="problem">
           </div>
         </div>
-        <form action="" id="form-practice">
+        <div class="hidden" id="practice-network-error">
+          <h2 class=".red-text">Sorry, there a problem with the network, please try again.</h2>
+          <button type="button" id="try-again-button" class="white-text font-size button">Try Again</button>
+        </div>
+        <form action="" id="form-practice" class="hidden">
           <div class="row result">
             <div class="column-full">
               <div>
